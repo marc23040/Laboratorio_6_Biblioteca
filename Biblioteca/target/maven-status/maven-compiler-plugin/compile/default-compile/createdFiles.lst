@@ -1,0 +1,12 @@
+com\umariana\biblioteca\Metodos.class
+Servlets\SvBuscarOrdenar.class
+com\umariana\biblioteca\resources\JakartaEE8Resource.class
+Servlets\SvEliminarEditar.class
+com\umariana\biblioteca\PersistenciaArchivo.class
+com\umariana\biblioteca\Usuarios.class
+com\umariana\biblioteca\Biblioteca.class
+com\umariana\biblioteca\Libro.class
+com\umariana\biblioteca\JakartaRestConfiguration.class
+com\umariana\biblioteca\Nodo.class
+Servlets\SvLoginRegister.class
+Servlets\SvAnadirVer.class
