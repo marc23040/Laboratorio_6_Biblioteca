@@ -23,6 +23,14 @@ public class Metodos {
         }
         return true; 
     }
+    public static Usuarios encontrarUsuario(int cedula, ArrayList<Usuarios> misUsuarios) throws IOException{
+        for (Usuarios u: misUsuarios){
+            if (u.getCedula()==cedula){
+                return u; 
+            }
+        }
+        return null; 
+    }
     
     public static String ingresoUsuarios(int cedula,String contrasenia, ArrayList<Usuarios> misUsuarios) throws IOException{
         for (Usuarios u: misUsuarios){
@@ -32,7 +40,34 @@ public class Metodos {
         }
         return "no";
     }
-    public static String listar(ServletContext context, String terminoBusqueda){
+    public static String listar(ServletContext context, String terminoBusqueda, String cedula, String buscar){
+        Biblioteca libros= new Biblioteca();
+        libros=PersistenciaArchivo.deserializarBiblioteca(context);
+        if(libros==null){
+            libros= new Biblioteca();
+        }
+        String tabla="";
+
+        if(terminoBusqueda==null && buscar==null){
+            tabla= libros.librosLogin();
+        }else if(terminoBusqueda!=null){
+            if(terminoBusqueda.equals("disponibles")){
+                  tabla= libros.librosDisponibles();
+
+            }else if(terminoBusqueda.equals("alquilados")){
+                tabla=libros.librosPrestados(Integer.parseInt(cedula));
+            } else if(terminoBusqueda.equals("antiguos")){
+                tabla=libros.librosOrdenadosPorAnoAscendente();
+            }else if(terminoBusqueda.equals("recientes")){
+                tabla=libros.librosOrdenadosPorAnoDescendente();
+            }
+          
+        }else if(buscar!=null){
+            tabla=libros.librosLoginBus(buscar);
+        }
+        return tabla ;
+    }
+    public static String buscar(ServletContext context, String terminoBusqueda, String cedula){
         Biblioteca libros= new Biblioteca();
         libros=PersistenciaArchivo.deserializarBiblioteca(context);
         if(libros==null){
@@ -41,9 +76,19 @@ public class Metodos {
         String tabla="";
 
         if(terminoBusqueda==null){
-            tabla= libros.tabla();
+            tabla= libros.librosLogin();
         }else if(terminoBusqueda!=null){
-            tabla= libros.tablaBusqueda(terminoBusqueda);
+            if(terminoBusqueda.equals("disponibles")){
+                  tabla= libros.librosDisponibles();
+
+            }else if(terminoBusqueda.equals("alquilados")){
+                tabla=libros.librosPrestados(Integer.parseInt(cedula));
+            } else if(terminoBusqueda.equals("antiguos")){
+                tabla=libros.librosOrdenadosPorAnoAscendente();
+            }else if(terminoBusqueda.equals("recientes")){
+                tabla=libros.librosOrdenadosPorAnoDescendente();
+            }
+          
         }
         return tabla ;
     }

@@ -4,6 +4,7 @@
   <%
   String registro = request.getParameter("add");
   String ingreso = request.getParameter("ingreso");
+  String alert= request.getParameter("alert");
   
     if(registro!=null && registro.equals("no")){
     %>
@@ -32,7 +33,15 @@
         </script> 
     <%
 
-    }
+    } if(alert!=null && alert.equals("salida")){
+ %>
+        <script>
+             $(document).ready(function () {
+                salida();
+            });
+        </script> 
+    <%
+}
 
   %>  
   <main>
@@ -118,8 +127,14 @@
     </div>
   </main>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>  
+    
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+  
   <script src="scripts/script_index.js"></script>
+  
   <script>
     function noRegistrado(){
       toastr.options = {
@@ -181,6 +196,15 @@
     }
     toastr["error"]("El usuario ingresado no coincide, vuelve a intentar", "Error");
   } 
+  function salida() {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Saliste',
+            text:'Esperamos verte de nuevo ;)',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
   </script>
   
 <%@include file= "templates/footer.jsp" %> 

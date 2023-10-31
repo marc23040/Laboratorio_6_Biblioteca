@@ -60,17 +60,16 @@ public class SvAnadirVer extends HttpServlet {
         //se lee la informacion de los objetos ya guardados y se deserializan
         libros = PersistenciaArchivo.deserializarBiblioteca(context);//
         //pedimos el titulo del libro y lo guardamos en una variable
-        String titulo = request.getParameter("titulo");
+        int id =Integer.parseInt(request.getParameter("id"));
         
         //creamos un nuevo libro y llamamos al metodo encontrarLibro para adquirir sus atributos
         //enviamos como parametro el titulo para que el metodo lo filtre en el array 
-        Libro li = libros.encontrarLibro(titulo);
-        System.out.println("===>" + titulo);
+        Libro li = libros.encontrarLibro(id);
+
         if (li != null) {
             String libroHtml = "<h2>Nombre: " + li.getTitulo() + "</h2>"
                     + "<p>Autor: " + li.getAutor() + "</p>"
                     + "<p>Año publicado: " + li.getAnoPublicacion() + "</p>"
-                    + "<p>Estado: " + li.isPrestamo() + "</p>"
                     + "<img src='imagenes/" + li.getFotoPortada() + "' alt='" + li.getFotoPortada() + "' width='100%'/>";
             response.setContentType("text/html; charset=UTF-8");
             response.getWriter().write(libroHtml);
@@ -116,23 +115,23 @@ public class SvAnadirVer extends HttpServlet {
         String titulo = request.getParameter("titulo");
         String autor = request.getParameter("autor");
         int anio = Integer.parseInt(request.getParameter("anio"));
+        String genero = request.getParameter("genero");
         String fotoPortada = fileName;
-        String pres = request.getParameter("prestamo");
-        boolean prestamo = false;
-        if (pres != null && pres.equals("true")) {
-            prestamo = true;
-        }
-        Libro libro = new Libro(titulo, autor, anio, fotoPortada, prestamo);
-        System.out.println(titulo + autor + anio + fotoPortada + prestamo);
+       
+        
         Biblioteca libros = new Biblioteca();
+         
         libros = PersistenciaArchivo.deserializarBiblioteca(context);
         if (libros == null) {
             libros = new Biblioteca();
         }
+        int id=libros.id()+1;
+        Libro libro = new Libro(id,titulo, autor, anio, fotoPortada,genero, null);
+        
         libros.insertar(libro);
         PersistenciaArchivo.serializarBiblioteca(libros, context);
         libros.listarLibros();
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("gestionLibros.jsp?alert=anadido");
     }
 
     @Override

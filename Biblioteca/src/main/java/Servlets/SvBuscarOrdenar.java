@@ -30,16 +30,32 @@ public class SvBuscarOrdenar extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          //Se obtiene el parametro de busqueda
-        String terminoBusqueda = request.getParameter("buscar");
+        String terminoBusqueda = request.getParameter("ordenar");
+        String genero = request.getParameter("genero");
         //Redirigimos con la variable para que cambie la tabla
-        response.sendRedirect("login.jsp?search="+terminoBusqueda);
+        String ruta="biblioteca.jsp?ordenar="+terminoBusqueda+"&cedula="+request.getParameter("cedula");
+        if(genero!=null && terminoBusqueda==null){
+            ruta="librosGeneros.jsp?genero="+genero;
+        }
+        response.sendRedirect(ruta);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+          String terminoBusqueda = request.getParameter("buscar");
+          String terminoTabla = request.getParameter("buscarTabla");
+          String terminoGeneros = request.getParameter("buscarGeneros");
+           String ruta="biblioteca.jsp?buscar="+terminoBusqueda;
+
+          if(terminoTabla!=null){
+           ruta="listarLibros.jsp?buscar="+terminoTabla;   
+          } else if(terminoGeneros!=null){
+            ruta="librosGeneros.jsp?buscar="+terminoGeneros+"&genero="+request.getParameter("genero");
+          }
+        //Redirigimos con la variable para que cambie la tabla
+       
+        response.sendRedirect(ruta);
     }
 
     /**

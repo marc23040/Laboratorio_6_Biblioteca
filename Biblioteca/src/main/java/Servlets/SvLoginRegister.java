@@ -76,6 +76,7 @@ public class SvLoginRegister extends HttpServlet {
             request.getRequestDispatcher("index.jsp?ingreso=" + ingreso).forward(request, response);
          }else{
             request.getSession().setAttribute("usuario", ingreso);
+            request.getSession().setAttribute("cedula", cedula);
             response.sendRedirect("login.jsp");
          }           
        
