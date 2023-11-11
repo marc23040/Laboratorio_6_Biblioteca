@@ -17,13 +17,31 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
         
         <!-- SWEET ALLERT -->
-        <link rel="stylesheet" href="ruta_a_swal_css/sweetalert2.min.css">
-        <script src="ruta_a_swal_js/sweetalert2.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
         <!-- FONT AWESOME -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+        
+        <style>
+        @font-face {
+            font-family: 'Handmade';
+            src: url('Fonts/Handmade.otf') format('opentype');
+
+        }
+        @font-face {
+            font-family: 'Regular';
+            src: url('Fonts/Abecedary-Regular.ttf') format('truetype');
+
+        }
+        @font-face {
+            font-family: 'bold';
+            src: url('Fonts/Farmhouse.otf') format('opentype');
+
+        }
+        </style>
+        
         <title>Biblioteca</title>
         
     </head>

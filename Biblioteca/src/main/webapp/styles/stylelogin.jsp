@@ -16,7 +16,7 @@
 
     /*menu desplegable*/
     #intro {
-        background-color: #1f0808; /* Cambia el color rojo (#FF0000) al que desees */
+        background-color: #1f0808; 
         min-width: 250px;
         max-width: 300px;
         padding: 2%;
