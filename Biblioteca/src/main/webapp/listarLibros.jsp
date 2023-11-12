@@ -122,33 +122,12 @@
     </div>
     <br>
     <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered ">
-                        <thead >
-                            <tr>
-                                <th>Id</th>
-                                <th>Titulo</th>
-                                <th>Autor</th>
-                                <th>Año</th>
-                                <th>Genero</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+        
+                   
+                        
                             <%=tabla%>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-    </div>
+                       
+                  
 </div>  
 
 

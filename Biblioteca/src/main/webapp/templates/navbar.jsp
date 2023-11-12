@@ -1,6 +1,7 @@
 
 
 <nav class="navbar navbar-expand-lg">
+    
     <div class="container-fluid">
 
         <button class="btn icono" data-bs-toggle="offcanvas" data-bs-target="#intro"><i class="fa-solid fa-list"></i></button>
@@ -58,7 +59,7 @@
         </li>
         </ul>
     </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="ms-auto" id="navbarSupportedContent">
             <form class="d-flex" action="SvBuscarOrdenar" method="POST">
                 <input class="form-control me-2" name="buscar" type="search" placeholder="Busca tu libro" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>

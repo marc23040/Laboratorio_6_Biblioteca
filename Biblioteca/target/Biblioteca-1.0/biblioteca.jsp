@@ -13,8 +13,22 @@
     String buscar= request.getParameter("buscar");
     int cedula=0;
     String ced = request.getParameter("cedula");
- 
+    String mensaje1="TODOS LOS LIBROS";
+    String mensaje2="¡Prueba el sistema de alquiler de libros! No olvides regresar tus libros a tiempo.";
     tabla = Metodos.listar(context, ordenarr,ced, buscar);
+    if(ordenarr!=null && ordenarr.equals("alquilados")){
+     mensaje1="LIBROS ALQUILADOS";  
+     mensaje2="";
+    } else if(ordenarr!=null && ordenarr.equals("disponibles")){
+        mensaje1="LIBROS DISPONIBLES";  
+     mensaje2="";
+    }else if(ordenarr!=null && ordenarr.equals("antiguos")){
+        mensaje1="LIBROS MAS ANTIGUOS";  
+     mensaje2="";
+    }else if(ordenarr!=null && ordenarr.equals("recientes")){
+        mensaje1="LIBROS MÁS NUEVOS";  
+     mensaje2="";
+    }
 
     String alert = request.getParameter("alert");
  
@@ -40,8 +54,37 @@
 <%
     }
 %>
+
+
+
+<main style="  width: 100%;
+
+  
+  background-color: #e8c382;
+  padding: 2rem;
+
+  align-items: center;
+  justify-content: center;">
+
+<div class="box" style=" 
+  width: 100%;
+  height: 200px;
+  background-color: #f8f1e9;
+  border-radius: 3.3rem;
+  box-shadow: 0 40px 40px -30px #615145; ">
+    <br>
+    <center>
+    <h1 style="font-family: 'bold', sans-serif; font-size: 5rem;  letter-spacing: 7px;"><%=mensaje1%></h1>
+    <h2 style="font-family: 'Regular', sans-serif;font-size:2rem;"> <%=mensaje2%></h2>
+    </center>
+    
+
+</div>
+
+    </main>
+
 <div class="container p-4">
-   <div class="row row-cols-1 row-cols-md-3 g-4">
+   <div class="row row-cols-1 row-cols-md-4 g-4">
    <%=tabla%>
 
     </div>

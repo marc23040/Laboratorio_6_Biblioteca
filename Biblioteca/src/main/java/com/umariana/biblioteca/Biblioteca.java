@@ -52,24 +52,37 @@ public class Biblioteca implements Serializable{
    
    public String tabla(){
     Nodo actual = primero; // Comenzamos desde el primer nodo
-        StringBuilder tablaHtml = new StringBuilder();
+        String libros="";
         while (actual != null) {
             Libro libro = actual.getLibro();
-            tablaHtml.append("<tr>");
-            tablaHtml.append("<td>").append(libro.getId()).append("</td>");
-            tablaHtml.append("<td>").append(libro.getTitulo()).append("</td>");
-            tablaHtml.append("<td>").append(libro.getAutor()).append("</td>");
-            tablaHtml.append("<td>").append(libro.getAnoPublicacion()).append("</td>");
-            tablaHtml.append("<td>").append(libro.getGenero()).append("</td>");
-            tablaHtml.append("<td>").append(libro.getGenero()).append("</td>");
-            tablaHtml.append("<td><center> <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"ver\" data-bs-target=\"#exampleModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-eye\"></i> </a>");
-            tablaHtml.append("<a href=\"#\" class=\"btn btn-primary\"  data-bs-toggle=\"editar\" data-bs-target=\"#editarModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-pencil-alt\"></i></a>");
-            tablaHtml.append("<a href=\"#\" class=\"btn btn-danger deleteButton\" id=\"deleteButton\" data-titulo=\""+ libro.getId() + "\"><i class=\"fas fa-trash-alt\"></i></a></center></td>");
-            tablaHtml.append("</tr>");
+            String estado="Disponible";
+            if (libro.getPrestado()!=null){ estado="Prestado a "+libro.getPrestado().getCedula();}
+            libros=libros+" <div class=\"card mb-2\" style=\"max-width: 540px;\">"
+                        + "<div class=\"row g-0\">"
+                        + " <div class=\"col-md-4\">"
+                        + "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"img-fluid rounded-start\" alt=\"...\" width=\"200px\" height=\"300px\">"
+                        + "</div>"
+                        + "<div class=\"col-md-8\">"
+                        + "<div class=\"card-body\">"
+                        + "<h5 class=\"card-title\"><b>Id: </b>"+libro.getId()+"</h5>"
+                        + "<h5 class=\"card-title\"><b>Titulo: </b>"+libro.getTitulo()+"</h5>"
+                        + "<h5 class=\"card-title\"><b>Autor: </b>"+libro.getAutor()+"</h5>"
+                        + "<h5 class=\"card-title\"><b>Año: </b>"+libro.getAnoPublicacion()+"</h5>"
+                        + "<h5 class=\"card-title\"><b>Genero: </b>"+libro.getGenero()+"</h5>" 
+                        
+                        + "<h5 class=\"card-title\"><b>Estado: </b>"+estado+"</h5>"
+                       
+                        + "<center> <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"ver\" data-bs-target=\"#exampleModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-eye\"></i> </a>"
+                        + "<a href=\"#\" class=\"btn btn-primary\"  data-bs-toggle=\"editar\" data-bs-target=\"#editarModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-pencil-alt\"></i></a>"
+                        + "<a href=\"#\" class=\"btn btn-danger deleteButton\" id=\"deleteButton\" data-titulo=\""+ libro.getId() + "\"><i class=\"fas fa-trash-alt\"></i></a></center>"
+                        + " </div>"
+                        + "</div>"
+                        + " </div>"
+                        + "</div>";
             actual = actual.getSiguiente(); // Avanzar al siguiente nodo
         }
-        tablaHtml.append("</table>");
-    return tablaHtml.toString();
+
+    return libros;
    }
    
    public Libro encontrarLibro(int id){
@@ -130,100 +143,108 @@ public class Biblioteca implements Serializable{
 
     public String tablaBusqueda(String terminoBusqueda){
     Nodo actual = primero; // Comenzamos desde el primer nodo
-        StringBuilder tablaHtml = new StringBuilder();
+        String libros="";
         boolean encontrados=false;
         while (actual != null) {
           
             Libro libro = actual.getLibro();
             if(libro.getTitulo().contains(terminoBusqueda) || libro.getAutor().contains(terminoBusqueda)){
-                tablaHtml.append("<tr>");
-                tablaHtml.append("<td>").append(libro.getId()).append("</td>");
-                tablaHtml.append("<td>").append(libro.getTitulo()).append("</td>");
-                tablaHtml.append("<td>").append(libro.getAutor()).append("</td>");
-                tablaHtml.append("<td>").append(libro.getAnoPublicacion()).append("</td>");
-                tablaHtml.append("<td>").append(libro.getGenero()).append("</td>");
-                tablaHtml.append("<td>").append(libro.getGenero()).append("</td>");
-                tablaHtml.append("<td><center> <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"ver\" data-bs-target=\"#exampleModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-eye\"></i> </a>");
-                tablaHtml.append("<a href=\"#\" class=\"btn btn-primary\"  data-bs-toggle=\"editar\" data-bs-target=\"#editarModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-pencil-alt\"></i></a>");
-                tablaHtml.append("<a href=\"#\" class=\"btn btn-danger deleteButton\" id=\"deleteButton\" data-titulo=\""+ libro.getId() + "\"><i class=\"fas fa-trash-alt\"></i></a></center></td>");
-                tablaHtml.append("</tr>");
+                libros=" <div class=\"card mb-3\" style=\"max-width: 540px;\">"
+                        + "<div class=\"row g-0\">"
+                        + " <div class=\"col-md-4\">"
+                        + "<img src=\"...\" class=\"img-fluid rounded-start\" alt=\"...\">"
+                        + "</div>"
+                        + "<div class=\"col-md-8\">"
+                        + "<div class=\"card-body\">"
+                        + "<h5 class=\"card-title\">Card title</h5>"
+                        + "<p class=\"card-text\">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>"
+                        + "\"<center> <a href=\\\"#\\\" class=\\\"btn btn-primary\\\" data-bs-toggle=\\\"ver\\\" data-bs-target=\\\"#exampleModal\\\" data-nombre=\\\"\"+ libro.getId() + \"\\\"><i class=\\\"fas fa-eye\\\"></i> </a>\n" +
+"               <a href=\\\"#\\\" class=\\\"btn btn-primary\\\"  data-bs-toggle=\\\"editar\\\" data-bs-target=\\\"#editarModal\\\" data-nombre=\\\"\"+ libro.getId() + \"\\\"><i class=\\\"fas fa-pencil-alt\\\"></i></a>\n" +
+"               \"<a href=\\\"#\\\" class=\\\"btn btn-danger deleteButton\\\" id=\\\"deleteButton\\\" data-titulo=\\\"\"+ libro.getId() + \"\\\"><i class=\\\"fas fa-trash-alt\\\"></i></a></center>\""
+                        + " </div>"
+                        + "</div>"
+                        + " </div>"
+                        + "</div>";
+                
             encontrados=true;
         }
             actual = actual.getSiguiente(); // Avanzar al siguiente nodo
         }
         if(!encontrados){
-            tablaHtml.append("<tr>");
-            tablaHtml.append("<td>No hay coincidencias :(</td>");
-            tablaHtml.append("<td></td>");
-            tablaHtml.append("<td></td>");
-            tablaHtml.append("<td></td>"); 
-            tablaHtml.append("<td></td>"); 
-            tablaHtml.append("<td></td>"); 
-            tablaHtml.append("<td> <a href=\"#\" class=\"btn btn-primary\"><i class=\"fas fa-eye\"></i> </a>");
-            tablaHtml.append("<a href=\"#\" class=\"btn btn-primary\" ><i class=\"fas fa-pencil-alt\"></i></a>");
-            tablaHtml.append("<a href=\"#\" class=\"btn btn-danger\" ><i class=\"fas fa-trash-alt\"></i></a></td>");
-            tablaHtml.append("</tr>");
+
         }
-          tablaHtml.append("</table>");
-    return tablaHtml.toString();
+
+    return libros;
    }
    
      public String librosLogin() {
         Nodo actual = primero; // Comenzamos desde el primer nodo
         
         String libros = "";
-
+        boolean encontrado=false;
             while (actual != null) {
                 Libro libro = actual.getLibro();
                 libros += "<div class=\"col\">";
                 libros += "<div class=\"card\">";
-                libros += "<div class=\"card-header\">";
-                libros += "</div>";
-                libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+               
                 libros += "<div class=\"card-body\">";
-                libros += "<h5 class=\"card-title\">"+libro.getTitulo()+"</h5>";
-                libros += "<p class=\"card-text\"> Autor: "+libro.getAutor()+"</p>";
-                libros += "<p class=\"card-text\"> Año publicado: "+libro.getAnoPublicacion()+"</p>";
+                 libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+                libros += "<center><h2 class=\"card-title\">"+libro.getTitulo()+"</h2></center>";
+                libros += "<p class=\"card-text\"> <b> Autor: </b>"+libro.getAutor()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Año: </b>"+libro.getAnoPublicacion()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
                 if(libro.getPrestado()==null){
-                    libros += " <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\">Alquilar</a>";
+                    libros += " <center><a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\" style=\" background-color: #5e3824;\">Alquilar</a></center>";
                 }else if(libro.getPrestado()!=null){
-                    libros += " <a href=\"#\" class=\"btn btn-primary\">no disponible</a>";
+                    libros += "<p><b>Disponible en: </b>"+libro.getPrestado().getTiempo()+"</p>";
                 }
                 libros += "</div>";
                 libros += "</div>";
                 libros += "</div>";
                 actual=actual.getSiguiente();
+                encontrado=true;
             }
-
+            if (!encontrado){
+                libros +="<center><h2>No hemos encontrado nada :( </h2></center>";
+                libros +="<center><a href\"gestionLibros.jsp\">Aportanos<p></center>";
+            }
         return libros;
     }
      public String librosLoginBus(String buscar) {
         Nodo actual = primero; // Comenzamos desde el primer nodo
         
         String libros = "";
-
+        boolean encontrado=false;
             while (actual != null) {
                 Libro libro = actual.getLibro();
                 if(libro.getTitulo().contains(buscar)|| libro.getAutor().contains(buscar)){
                 libros += "<div class=\"col\">";
                 libros += "<div class=\"card\">";
-                libros += "<div class=\"card-header\">";
-                libros += "</div>";
-                libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+               
                 libros += "<div class=\"card-body\">";
-                libros += "<h5 class=\"card-title\">"+libro.getTitulo()+"</h5>";
-                libros += "<p class=\"card-text\"> Autor: "+libro.getAutor()+"</p>";
-                libros += "<p class=\"card-text\"> Año publicado: "+libro.getAnoPublicacion()+"</p>";
+                 libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+                libros += "<center><h2 class=\"card-title\">"+libro.getTitulo()+"</h2></center>";
+                libros += "<p class=\"card-text\"> <b> Autor: </b>"+libro.getAutor()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Año: </b>"+libro.getAnoPublicacion()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
                 if(libro.getPrestado()==null){
-                    libros += " <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\">Alquilar</a>";
+                    libros += " <center><a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\" style=\" background-color: #5e3824;\">Alquilar</a></center>";
                 }else if(libro.getPrestado()!=null){
-                    libros += " <a href=\"#\" class=\"btn btn-primary\">no disponible</a>";
+                    libros += "<p><b>Disponible en: </b>"+libro.getPrestado().getTiempo()+"</p>";
                 }
                 libros += "</div>";
                 libros += "</div>";
                 libros += "</div>";
+                encontrado=true;
                 }
+                
                 actual=actual.getSiguiente();
+               
+            }
+            
+            if (!encontrado){
+                libros +="<center><h2>No hemos encontrado nada :( </h2></center>";
+                libros +="<center><a href\"gestionLibros.jsp\">Aportanos<p></center>";
             }
 
         return libros;
@@ -268,24 +289,31 @@ public class Biblioteca implements Serializable{
     public String librosDisponibles() {
         Nodo actual = primero; // Comenzamos desde el primer nodo       
         String libros = "";
+         boolean encontrado=false;
             while (actual != null) {
                 Libro libro = actual.getLibro();
                 if(libro.getPrestado()==null){
-                libros += "<div class=\"col\">";
+                 libros += "<div class=\"col\">";
                 libros += "<div class=\"card\">";
-                libros += "<div class=\"card-header\">";
-                libros += "</div>";
-                libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+               
                 libros += "<div class=\"card-body\">";
-                libros += "<h5 class=\"card-title\">"+libro.getTitulo()+"</h5>";
-                libros += "<p class=\"card-text\"> Autor: "+libro.getAutor()+"</p>";
-                libros += "<p class=\"card-text\"> Año publicado: "+libro.getAnoPublicacion()+"</p>";
-                libros += " <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\">Alquilar</a>";               
+                 libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+                libros += "<center><h2 class=\"card-title\">"+libro.getTitulo()+"</h2></center>";
+                libros += "<p class=\"card-text\"> <b> Autor: </b>"+libro.getAutor()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Año: </b>"+libro.getAnoPublicacion()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
+                libros += " <center><a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\" style=\" background-color: #5e3824;\">Alquilar</a></center>";
                 libros += "</div>";
                 libros += "</div>";
-                libros += "</div>";               
+                libros += "</div>";  
+                encontrado=true;
                 }
                 actual=actual.getSiguiente();
+                
+            }
+            if (!encontrado){
+                libros +="<center><h2>No hemos encontrado nada :( </h2></center>";
+                libros +="<center><a href\"gestionLibros.jsp\">Aportanos<p></center>";
             }
 
         return libros;
@@ -294,27 +322,33 @@ public class Biblioteca implements Serializable{
         Nodo actual = primero; // Comenzamos desde el primer nodo
         
         String libros = "";
-        boolean parametro=false;
+         boolean encontrado=false;
             while (actual != null) {
                 Libro libro = actual.getLibro();
                 Prestamo info=libro.getPrestado();
-                if(libro.getPrestado()!=null && info.getCedula()==cedula){
-                    libros += "<div class=\"col\">";
-                    libros += "<div class=\"card\">";
-                    libros += "<div class=\"card-header\">";
-                    libros += "</div>";
-                    libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
-                    libros += "<div class=\"card-body\">";
-                    libros += "<h5 class=\"card-title\">"+libro.getTitulo()+"</h5>";
-                    libros += "<p class=\"card-text\"> Regresalo en: "+libro.getPrestado().getTiempo()+"</p>";
+                if(libro.getPrestado()!=null && info.getCedula()==cedula){   
+                     libros += "<div class=\"col\">";
+                libros += "<div class=\"card\">";
+               
+                libros += "<div class=\"card-body\">";
+                 libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+                libros += "<center><h2 class=\"card-title\">"+libro.getTitulo()+"</h2></center>";
+                libros += "<p class=\"card-text\"> <b> Autor: </b>"+libro.getAutor()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Año: </b>"+libro.getAnoPublicacion()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
+                 libros += "<p class=\"card-text\"> Regresalo en: "+libro.getPrestado().getTiempo()+"</p>";
                    
                     libros += " <a href=\"#\" class=\"btn btn-primary devolverButton\" id=\"devolverButton\" data-titulo=\""+ libro.getId() + "\" >Regresarlo</a>";
-                    
-                    libros += "</div>";
-                    libros += "</div>";
-                    libros += "</div>";              
+                libros += "</div>";
+                libros += "</div>";
+                libros += "</div>";
+                encontrado=true;
                 }
                 actual=actual.getSiguiente();
+            }
+            if (!encontrado){
+                libros +="<center><h2>No hemos encontrado nada :( </h2></center>";
+                libros +="<center><a href\"gestionLibros.jsp\">Aportanos<p></center>";
             }
 
         return libros;
@@ -322,26 +356,36 @@ public class Biblioteca implements Serializable{
     public String librosGenero(String genero) {
         Nodo actual = primero; // Comenzamos desde el primer nodo      
         String libros = "";
-
+         boolean encontrado=false;
             while (actual != null) {
                 Libro libro = actual.getLibro();
 
                 if(libro.getGenero().equals(genero)){
-                    libros += "<div class=\"col\">";
-                    libros += "<div class=\"card\">";
-                    libros += "<div class=\"card-header\">";
-                    libros += "</div>";
-                    libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
-                    libros += "<div class=\"card-body\">";
-                    libros += "<h5 class=\"card-title\">"+libro.getTitulo()+"</h5>";
-                   
-                    libros += " <a href=\"#\" class=\"btn btn-primary devolverButton\" id=\"devolverButton\" data-titulo=\""+ libro.getId() + "\" >Regresarlo</a>";
-                    
-                    libros += "</div>";
-                    libros += "</div>";
-                    libros += "</div>";              
+
+                libros += "<div class=\"col\">";
+                libros += "<div class=\"card\">";
+               
+                libros += "<div class=\"card-body\">";
+                 libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+                libros += "<center><h2 class=\"card-title\">"+libro.getTitulo()+"</h2></center>";
+                libros += "<p class=\"card-text\"> <b> Autor: </b>"+libro.getAutor()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Año: </b>"+libro.getAnoPublicacion()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
+                if(libro.getPrestado()==null){
+                    libros += " <center><a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\" style=\" background-color: #5e3824;\">Alquilar</a></center>";
+                }else if(libro.getPrestado()!=null){
+                    libros += "<p><b>Disponible en: </b>"+libro.getPrestado().getTiempo()+"</p>";
+                }
+                libros += "</div>";
+                libros += "</div>";
+                libros += "</div>";       
+                encontrado=true;
                 }
                 actual=actual.getSiguiente();
+            }
+            if (!encontrado){
+                libros +="<center><h2>No hemos encontrado nada :( </h2></center>";
+                libros +="<center><a href\"gestionLibros.jsp\">Aportanos<p></center>";
             }
 
         return libros;
@@ -349,37 +393,46 @@ public class Biblioteca implements Serializable{
      public String librosGeneroBuscar(String genero, String termino) {
         Nodo actual = primero; // Comenzamos desde el primer nodo      
         String libros = "";
-
+         boolean encontrado=false;
             while (actual != null) {
                 Libro libro = actual.getLibro();
 
                 if(libro.getGenero().equals(genero)){
                     if(libro.getTitulo().contains(termino) || libro.getAutor().contains(termino)){
-                        libros += "<div class=\"col\">";
-                        libros += "<div class=\"card\">";
-                        libros += "<div class=\"card-header\">";
-                        libros += "</div>";
-                        libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
-                        libros += "<div class=\"card-body\">";
-                        libros += "<h5 class=\"card-title\">"+libro.getTitulo()+"</h5>";
-
-                        libros += " <a href=\"#\" class=\"btn btn-primary devolverButton\" id=\"devolverButton\" data-titulo=\""+ libro.getId() + "\" >Regresarlo</a>";
-
-                        libros += "</div>";
-                        libros += "</div>";
-                        libros += "</div>";              
+         
+                libros += "<div class=\"col\">";
+                libros += "<div class=\"card\">";
+               
+                libros += "<div class=\"card-body\">";
+                 libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+                libros += "<center><h2 class=\"card-title\">"+libro.getTitulo()+"</h2></center>";
+                libros += "<p class=\"card-text\"> <b> Autor: </b>"+libro.getAutor()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Año: </b>"+libro.getAnoPublicacion()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
+                if(libro.getPrestado()==null){
+                    libros += " <center><a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\" style=\" background-color: #5e3824;\">Alquilar</a></center>";
+                }else if(libro.getPrestado()!=null){
+                    libros += "<p><b>Disponible en: </b>"+libro.getPrestado().getTiempo()+"</p>";
+                }
+                libros += "</div>";
+                libros += "</div>";
+                libros += "</div>";    
+                encontrado=true;
                     }
                 }
                 actual=actual.getSiguiente();
             }
-
+            if (!encontrado){
+                libros +="<center><h2>No hemos encontrado nada :( </h2></center>";
+                libros +="<center><a href\"gestionLibros.jsp\">Aportanos<p></center>";
+            }
         return libros;
     }
     public String librosOrdenadosPorAnoDescendente() {
     // Crear una copia de la lista doblemente enlazada para no modificar la original
     Nodo actual = primero; // Comenzamos desde el primer nodo
     List<Libro> librosList = new ArrayList<>();
-
+     boolean encontrado=false;
     while (actual != null) {
         librosList.add(actual.getLibro());
         actual = actual.getSiguiente();
@@ -392,25 +445,30 @@ public class Biblioteca implements Serializable{
     String libros = "";
 
     for (Libro libro : librosList) {
-        libros += "<div class=\"col\">";
-        libros += "<div class=\"card\">";
-        libros += "<div class=\"card-header\">";
-        libros += "</div>";
-        libros += "<img src=\"imagenes/" + libro.getFotoPortada() + "\" class=\"card-img-top\" alt=\"" + libro.getFotoPortada() + "\" width=\"200px\" height=\"300px\">";
-        libros += "<div class=\"card-body\">";
-        libros += "<h5 class=\"card-title\">" + libro.getTitulo() + "</h5>";
-        libros += "<p class=\"card-text\"> Autor: " + libro.getAutor() + "</p>";
-        libros += "<p class=\"card-text\"> Año publicado: " + libro.getAnoPublicacion() + "</p>";
-        if (libro.getPrestado() == null) {
-            libros += " <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\"" + libro.getId() + "\">Alquilar</a>";
-        } else if (libro.getPrestado() != null) {
-            libros += " <a href=\"#\" class=\"btn btn-primary\">no disponible</a>";
-        }
-        libros += "</div>";
-        libros += "</div>";
-        libros += "</div>";
+       
+                libros += "<div class=\"col\">";
+                libros += "<div class=\"card\">";
+               
+                libros += "<div class=\"card-body\">";
+                 libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+                libros += "<center><h2 class=\"card-title\">"+libro.getTitulo()+"</h2></center>";
+                libros += "<p class=\"card-text\"> <b> Autor: </b>"+libro.getAutor()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Año: </b>"+libro.getAnoPublicacion()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
+                if(libro.getPrestado()==null){
+                    libros += " <center><a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\" style=\" background-color: #5e3824;\">Alquilar</a></center>";
+                }else if(libro.getPrestado()!=null){
+                    libros += "<p><b>Disponible en: </b>"+libro.getPrestado().getTiempo()+"</p>";
+                }
+                libros += "</div>";
+                libros += "</div>";
+                libros += "</div>";
+                encontrado=true;
     }
-
+    if (!encontrado){
+                libros +="<center><h2>No hemos encontrado nada :( </h2></center>";
+                libros +="<center><a href\"gestionLibros.jsp\">Aportanos<p></center>";
+            }
     return libros;
 }
     
@@ -418,7 +476,7 @@ public String librosOrdenadosPorAnoAscendente() {
     // Crear una copia de la lista doblemente enlazada para no modificar la original
     Nodo actual = primero; // Comenzamos desde el primer nodo
     List<Libro> librosList = new ArrayList<>();
-
+     boolean encontrado=false;
     while (actual != null) {
         librosList.add(actual.getLibro());
         actual = actual.getSiguiente();
@@ -431,24 +489,32 @@ public String librosOrdenadosPorAnoAscendente() {
     String libros = "";
 
     for (Libro libro : librosList) {
-        libros += "<div class=\"col\">";
-        libros += "<div class=\"card\">";
-        libros += "<div class=\"card-header\">";
-        libros += "</div>";
-        libros += "<img src=\"imagenes/" + libro.getFotoPortada() + "\" class=\"card-img-top\" alt=\"" + libro.getFotoPortada() + "\" width=\"200px\" height=\"300px\">";
-        libros += "<div class \"card-body\">";
-        libros += "<h5 class=\"card-title\">" + libro.getTitulo() + "</h5>";
-        libros += "<p class=\"card-text\"> Autor: " + libro.getAutor() + "</p>";
-        libros += "<p class=\"card-text\"> Año publicado: " + libro.getAnoPublicacion() + "</p>";
-        if (libro.getPrestado() == null) {
-            libros += " <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\"" + libro.getId() + "\">Alquilar</a>";
-        } else if (libro.getPrestado() != null) {
-            libros += " <a href=\"#\" class=\"btn btn-primary\">no disponible</a>";
-        }
-        libros += "</div>";
-        libros += "</div>";
-        libros += "</div>";
+
+                libros += "<div class=\"col\">";
+                libros += "<div class=\"card\">";
+               
+                libros += "<div class=\"card-body\">";
+                 libros += "<img src=\"imagenes/"+libro.getFotoPortada()+"\" class=\"card-img-top\" alt=\""+libro.getFotoPortada()+"\" width=\"200px\" height=\"300px\">";
+                libros += "<center><h2 class=\"card-title\">"+libro.getTitulo()+"</h2></center>";
+                libros += "<p class=\"card-text\"> <b> Autor: </b>"+libro.getAutor()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Año: </b>"+libro.getAnoPublicacion()+"</p>";
+                libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
+                if(libro.getPrestado()==null){
+                    libros += " <center><a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"alquilar\" data-bs-target=\"#alquilarModal\" data-nombre=\""+libro.getId()+"\" style=\" background-color: #5e3824;\">Alquilar</a></center>";
+                }else if(libro.getPrestado()!=null){
+                    libros += "<p><b>Disponible en: </b>"+libro.getPrestado().getTiempo()+"</p>";
+                }
+                libros += "</div>";
+                libros += "</div>";
+                libros += "</div>";
+                encontrado=true;
     }
+    if (!encontrado){
+                  libros += "<div class=\"col\">";
+                libros +="<center><h2>No hemos encontrado nada :( </h2></center>";
+                libros +="<center><a href\"gestionLibros.jsp\">Aportanos<p></center>";
+                libros += "</div>";
+            }
 
     return libros;
 }

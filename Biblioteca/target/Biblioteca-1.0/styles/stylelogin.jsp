@@ -9,7 +9,7 @@
 
 
     body {
-        background-color: #e7e4d5;
+        background-color: #e8c382;
         font-family: 'Poppins', sans-serif;
         margin: 0;
     }
@@ -34,7 +34,9 @@
 
     /* barra de navegacion */
     .navbar {
-        background-color: #340a0b;
+        background-color: #5e3824;
+         border-radius: 1.3rem;
+        box-shadow: 0 30px 40px -20px #615145;
     }
     .navbar-toggler-icon {
         background-color: #f8f1e9;
