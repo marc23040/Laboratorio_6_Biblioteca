@@ -19,7 +19,7 @@
                     Tu cuenta
                 </a>
                 <ul class="dropdown-menu">
-                    <li><button type="button"  class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cambiar contraseña</button></li>
+                    <li><button type="button"  class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#cambiarModal">Cambiar contraseña</button></li>
                     <li><a class="dropdown-item" href="index.jsp?alert=salida">Cerrar</a></li>
 
                 </ul>               

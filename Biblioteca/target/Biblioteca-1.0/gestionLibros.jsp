@@ -40,7 +40,10 @@
   border-radius: 3.3rem;
 ">
    <center>
-        <h1 style="font-family: 'bold', sans-serif; font-size: 4rem;  letter-spacing: 10px;"> AÑADIR LIBROS</h1>
+         <br>
+        <h1 style="font-size: 4rem; font-weight: bold;"> AÑADIR LIBROS</h1>
+        <br>
+        
 
      </center>
    </div>

@@ -77,7 +77,7 @@
      <%@include file= "templates/Generos.jsp" %> 
     <form class="d-flex" action="SvBuscarOrdenar" method="POST" style="margin-top: 1%;">
         <div class="input-group">    
-            <input class="form-control me-2" name="buscarGeneros" type="search" placeholder="Busca tu libro" aria-label="Search"style="  -moz-border-radius: 10px;-webkit-border-radius: 40px;border-radius: 40px;border: 1px solid #000000;height: 60px;padding: 0 4px 0 4px;">
+            <input class="form-control me-2" name="buscarGeneros" type="search" placeholder="  Busca tu libro" aria-label="Search"style="  -moz-border-radius: 10px;-webkit-border-radius: 40px;border-radius: 40px;border: 1px solid #000000;height: 60px;padding: 0 4px 0 4px;">
             <input class="form-control me-2" name="genero" value="<%=request.getParameter("genero")%>" hidden>
         </div>
         <button class="btn btn-outline-success" type="submit" style=" background-color: #5e3824;-moz-border-radius: 10px; border-radius: 50%; -webkit-border-radius: 60px;margin-left: 10px;"><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></button>

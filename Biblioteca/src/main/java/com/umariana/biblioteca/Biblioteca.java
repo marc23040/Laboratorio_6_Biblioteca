@@ -53,9 +53,9 @@ public class Biblioteca implements Serializable{
             tablaHtml.append("<td>").append(libro.getAnoPublicacion()).append("</td>");
             tablaHtml.append("<td>").append(libro.getGenero()).append("</td>");
             tablaHtml.append("<td>").append(estado).append("</td>");         
-            tablaHtml.append("<td> <a href=\"#\" class=\"btn btn-outline-success\" data-bs-toggle=\"ver\" data-bs-target=\"#exampleModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-eye\"></i> </a>");
+            tablaHtml.append("<td> <a href=\"#\" class=\"btn btn-outline-primary\" data-bs-toggle=\"ver\" data-bs-target=\"#exampleModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-eye\"></i> </a>");
             tablaHtml.append("<a href=\"#\" class=\"btn btn-outline-warning\"  data-bs-toggle=\"editar\" data-bs-target=\"#editarModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-pencil-alt\"></i></a>");
-            tablaHtml.append("<a href=\"#\" class=\"\"btn btn-outline-danger deleteButton\" id=\"deleteButton\" data-titulo=\""+ libro.getId() + "\"><i class=\"fas fa-trash-alt\"></i></a></td>");
+            tablaHtml.append("<a href=\"#\" class=\"btn btn-outline-danger deleteButton\" id=\"deleteButton\" data-titulo=\"" + libro.getId() + "\"><i class=\"fas fa-trash-alt\"></i></a></td>");
             tablaHtml.append("</tr>");
             encontrados=true;
             actual = actual.getSiguiente(); // Avanzar al siguiente nodo
@@ -67,9 +67,7 @@ public class Biblioteca implements Serializable{
             tablaHtml.append("<td></td>");
             tablaHtml.append("<td></td>");
             tablaHtml.append("<td></td>");         
-            tablaHtml.append("<td> <a href=\"#\" class=\"btn btn-outline-success\"><i class=\"fas fa-eye\"></i> </a>");
-            tablaHtml.append("<a href=\"#\" class=\"btn btn-outline-warning\"><i class=\"fas fa-pencil-alt\"></i></a>");
-            tablaHtml.append("<a href=\"#\" class=\"\"btn btn-outline-danger\" ><i class=\"fas fa-trash-alt\"></i></a></td>");
+            tablaHtml.append("<td></td>"); 
             tablaHtml.append("</tr>");
         }
           tablaHtml.append("</table>");
@@ -146,10 +144,9 @@ public class Biblioteca implements Serializable{
             tablaHtml.append("<td>").append(libro.getAutor()).append("</td>");
             tablaHtml.append("<td>").append(libro.getAnoPublicacion()).append("</td>");
             tablaHtml.append("<td>").append(libro.getGenero()).append("</td>");
-            tablaHtml.append("<td>").append(estado).append("</td>");         
-            tablaHtml.append("<td><a href=\\\"#\\\" class=\\\"btn btn-primary\\\" data-bs-toggle=\\\"ver\\\" data-bs-target=\\\"#exampleModal\\\" data-nombre=\\\"\"+ libro.getId() + \"\\\"><i class=\\\"fas fa-eye\\\"></i> </a>>");
-            tablaHtml.append("<a href=\"#\" class=\"btn btn-warning\"  data-bs-toggle=\"editar\" data-bs-target=\"#editarModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-pencil-alt\"></i></a>");
-            tablaHtml.append("<a href=\"#\" class=\"\"btn btn-danger deleteButton\" id=\"deleteButton\" data-titulo=\""+ libro.getId() + "\"><i class=\"fas fa-trash-alt\"></i></a></td>");
+            tablaHtml.append("<td> <a href=\"#\" class=\"btn btn-outline-primary\" data-bs-toggle=\"ver\" data-bs-target=\"#exampleModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-eye\"></i> </a>");
+            tablaHtml.append("<a href=\"#\" class=\"btn btn-outline-warning\"  data-bs-toggle=\"editar\" data-bs-target=\"#editarModal\" data-nombre=\""+ libro.getId() + "\"><i class=\"fas fa-pencil-alt\"></i></a>");
+            tablaHtml.append("<a href=\"#\" class=\"btn btn-outline-danger deleteButton\" id=\"deleteButton\" data-titulo=\"" + libro.getId() + "\"><i class=\"fas fa-trash-alt\"></i></a></td>");
             tablaHtml.append("</tr>");
             encontrados=true;
             }
@@ -162,9 +159,7 @@ public class Biblioteca implements Serializable{
             tablaHtml.append("<td></td>");
             tablaHtml.append("<td></td>");
             tablaHtml.append("<td></td>");         
-            tablaHtml.append("<td> <a href=\"#\" class=\"btn btn-outline-success\"><i class=\"fas fa-eye\"></i> </a>");
-            tablaHtml.append("<a href=\"#\" class=\"btn btn-outline-warning\"><i class=\"fas fa-pencil-alt\"></i></a>");
-            tablaHtml.append("<a href=\"#\" class=\"\"btn btn-outline-danger\" ><i class=\"fas fa-trash-alt\"></i></a></td>");
+            tablaHtml.append("<td></td>"); 
             tablaHtml.append("</tr>");
         }
           tablaHtml.append("</table>");
@@ -289,7 +284,7 @@ public class Biblioteca implements Serializable{
                 libros += "<p class=\"card-text\"> <b>Genero: </b>"+libro.getGenero()+"</p>";
                  libros += "<p class=\"card-text\"> Regresalo en: "+libro.getPrestado().getTiempo()+"</p>";
                    
-                libros += " <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"devolver\" data-bs-target=\"#devolverModal\" data-nombre=\"\"+libro.getId()+\"\" style=\" background-color: #5e3824;>Regresarlo</a>";
+                libros += "<a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"devolver\" data-bs-target=\"#devolverModal\" data-nombre=\"" + libro.getId() + "\" style=\"background-color: #5e3824;\">Devolver</a>";
                 libros += "</div>";
                 libros += "</div>";
                 libros += "</div>";

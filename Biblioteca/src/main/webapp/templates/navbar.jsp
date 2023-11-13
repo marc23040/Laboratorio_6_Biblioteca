@@ -61,8 +61,8 @@
     </div>
         <div class="ms-auto" id="navbarSupportedContent">
             <form class="d-flex" action="SvBuscarOrdenar" method="POST">
-                <input class="form-control me-2" name="buscar" type="search" placeholder="Busca tu libro" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                <input class="form-control me-2" name="buscar" type="search" placeholder="  Busca tu libro" aria-label="Search" style="  -moz-border-radius: 10px;-webkit-border-radius: 40px;border-radius: 40px;border: 1px solid #000000;padding: 0 4px 0 4px;">
+                <button class="btn btn-outline-success" type="submit" style="  -moz-border-radius: 10px;-webkit-border-radius: 40px;border-radius: 20px;">Buscar</button>
             </form>
         </div>
 
