@@ -113,22 +113,40 @@
 %>
 
 
-<div class="container p-4">
-    <div class="card">
-        <div class="card-body">
-            <p>Bienvenid@, <%=session.getAttribute("usuario")%>! </p>
+<div class="container p-4" style=" height: 560px;">
+<div class="box" style=" 
+ 
+  background-color: #f8f1e9;
+  border-radius: 3.3rem;
+">
+   <center>
+        <h1 style="font-family: 'bold', sans-serif; font-size: 4rem;  letter-spacing: 10px;"> GESTIONAR LIBROS</h1>
 
-        </div>
-    </div>
+     </center>
+   </div>
     <br>
     <div class="row">
-        
-                   
-                        
+        <table class="table table-bordered ">
+                        <thead >
+                            <tr>
+                                <th>Titulo</th>
+                                <th>Autor</th>
+                                <th>Año</th>
+                                <th>Genero</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             <%=tabla%>
+                        </tbody>
+                    </table>
+                   
+   
                        
                   
 </div>  
+                        </div>  
 
 
 <!-- modal ver -->

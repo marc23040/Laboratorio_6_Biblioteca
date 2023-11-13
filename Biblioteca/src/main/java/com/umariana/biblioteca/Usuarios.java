@@ -18,6 +18,7 @@ public class Usuarios implements Serializable {
     private int cedula;
     private String nombre;
     private String contrasena;
+    private int penalizacion;
 
     /**
      * contstructores de la clase usuarios
@@ -30,11 +31,15 @@ public class Usuarios implements Serializable {
      * @param cedula
      * @param nombre
      * @param contrasena 
+     * @param penalizacion 
      */
-    public Usuarios(int cedula, String nombre, String contrasena) {
+
+
+    public Usuarios(int cedula, String nombre, String contrasena, int penalizacion) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.contrasena = contrasena;
+        this.penalizacion = penalizacion;
     }
 
     //METODOS GETTER Y SETTER
@@ -86,4 +91,12 @@ public class Usuarios implements Serializable {
         this.contrasena = contrasena;
     }
 
+    public int getPenalizacion() {
+        return penalizacion;
+    }
+
+    public void setPenalizacion(int penalizacion) {
+        this.penalizacion = penalizacion;
+    }
+    
 }

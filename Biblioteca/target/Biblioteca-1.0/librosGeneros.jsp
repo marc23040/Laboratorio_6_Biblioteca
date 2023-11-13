@@ -3,76 +3,40 @@
 <%@page import="com.umariana.biblioteca.Metodos"%>
 <%@include file= "templates/header.jsp" %>
 <%@include file= "templates/lateral.jsp" %>
-<%@include file= "templates/lateral.jsp" %>
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+<%@include file= "templates/navbar.jsp" %>
+<style>
+    
+    .image-container {
+      position: relative;
+      background-color: #f8f1e9; border-radius: 3.3rem; height: 400px; width: 100%; align-items: center;
+    }
 
-        <button class="btn icono" data-bs-toggle="offcanvas" data-bs-target="#intro"><i class="fa-solid fa-address-book"></i></button>
+    .image-container img {
+      width: 100%;     
+      height: 50%;
+      background-color: #f8f1e9; border-radius: 3.3rem; height: 400px; width: 100%;
+    }
 
-        <a href="login.jsp"><h1 class="navbar-brand" >Biblioteca online</h1></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-          <li class="nav-item">
-          <a class="nav-link " href="biblioteca.jsp" role="button" >
-            Libros
-          </a>
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      pointer-events: none; 
+      border-radius: 3.3rem;
+    }
 
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Ver
-          </a>
-          <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?ordenar=alquilados&cedula=<%=session.getAttribute("cedula")%>">Mis libros alquilados</a></li>
-            <li><a class="dropdown-item" href="SvBuscarOrdenar?ordenar=disponibles">Libros disponibles</a></li>
-          </ul>
+    .overlay-text {
+      position: absolute;
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      color: white; 
+    }
+</style>
 
-        </li>
-        <li class="nav-item dropdown">
-
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Ordenar
-          </a>
-          <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?ordenar=antiguos">Libros mas antiguos</a></li>
-            <li><a class="dropdown-item" href="SvBuscarOrdenar?ordenar=recientes">Libros mas recientes</a></li>
-          </ul>
-        </li>
-      
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Generos
-          </a>
-          <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Aventuras">Aventuras</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Ciencia Ficcion">Ciencia Ficción</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Romance">Romance</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Fantasia">Fantasia</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Humor">Humor</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Poesia">Poesia</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Mitologia">Mitologia</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Teatro">Teatro</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Infantil">Infantil</a></li>
-              <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Escolar">Escolar</a></li>       
-          </ul>
-
-        </li>
-        </ul>
-    </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex" action="SvBuscarOrdenar" method="POST">
-                <input class="form-control me-2" name="buscarGeneros" type="search" placeholder="Busca tu libro" aria-label="Search">
-                <input class="form-control me-2" name="genero" value="<%=request.getParameter("genero")%>" hidden>
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
-        </div>
-
-
-    </div>
-</nav>
 <header><%@include file= "styles/stylelogin.jsp" %></header>
 
 <%
@@ -97,8 +61,28 @@
 
     
 %>
+<br>
 
+
+  
 <div class="container p-4">
+    
+    <div class="image-container">
+       <img src="img/<%=genero%>.jpg">
+    <div class="overlay"></div>
+    <h1 class="overlay-text"><%=genero%></h1>
+</div>
+
+        <br>
+     <%@include file= "templates/Generos.jsp" %> 
+    <form class="d-flex" action="SvBuscarOrdenar" method="POST" style="margin-top: 1%;">
+        <div class="input-group">    
+            <input class="form-control me-2" name="buscarGeneros" type="search" placeholder="Busca tu libro" aria-label="Search"style="  -moz-border-radius: 10px;-webkit-border-radius: 40px;border-radius: 40px;border: 1px solid #000000;height: 60px;padding: 0 4px 0 4px;">
+            <input class="form-control me-2" name="genero" value="<%=request.getParameter("genero")%>" hidden>
+        </div>
+        <button class="btn btn-outline-success" type="submit" style=" background-color: #5e3824;-moz-border-radius: 10px; border-radius: 50%; -webkit-border-radius: 60px;margin-left: 10px;"><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></button>
+    </form>
+        <br>
    <div class="row row-cols-1 row-cols-md-3 g-4">
    <%=tabla%>
 

@@ -130,7 +130,7 @@ public class SvAnadirVer extends HttpServlet {
         
         libros.insertar(libro);
         PersistenciaArchivo.serializarBiblioteca(libros, context);
-        libros.listarLibros();
+    
         response.sendRedirect("gestionLibros.jsp?alert=anadido");
     }
 

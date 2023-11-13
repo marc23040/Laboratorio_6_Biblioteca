@@ -31,7 +31,7 @@ public class Metodos {
         }
         return null; 
     }
-    
+
     public static String ingresoUsuarios(int cedula,String contrasenia, ArrayList<Usuarios> misUsuarios) throws IOException{
         for (Usuarios u: misUsuarios){
             if (u.getCedula()==cedula && u.getContrasena().equals(contrasenia)){
@@ -91,5 +91,40 @@ public class Metodos {
           
         }
         return tabla ;
+    }
+
+    public static int analizarPenalizacion(String diasPrestados, int tiempo){
+        int mensaje=0;
+        switch(diasPrestados){
+                case "7 dias":
+
+                    if (tiempo>7 && tiempo<16){
+                       mensaje=1; 
+                    } else if(tiempo >16 && tiempo <30){
+                        mensaje=2; 
+                    } else if(tiempo>30){
+                        mensaje=3; 
+                    }
+                    break;
+                case "15 dias":
+                     if(tiempo >15 && tiempo <30){
+                        mensaje=1; 
+                    } else if(tiempo>30 && tiempo<45){
+                        mensaje=2; 
+                    } else if(tiempo>45){
+                        mensaje=3;
+                    }
+                    break;
+                case "1 mes":
+                    if(tiempo >60 && tiempo <75){
+                        mensaje=1; 
+                    } else if(tiempo>75 && tiempo<90){
+                        mensaje=2; 
+                    } else if(tiempo>90){
+                        mensaje=3;
+                    }
+                    break;
+        }
+        return mensaje;
     }
 }

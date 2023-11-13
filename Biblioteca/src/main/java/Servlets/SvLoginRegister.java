@@ -43,7 +43,7 @@ public class SvLoginRegister extends HttpServlet {
         ArrayList<Usuarios> users = PersistenciaArchivo.deserializarUsuarios(context);
 
          if(Metodos.usuarioIg(cedula, users)){
-            Usuarios user = new Usuarios(cedula, nombre, contrasenia);
+            Usuarios user = new Usuarios(cedula, nombre, contrasenia,0);
             
             users.add(user);
 
@@ -66,17 +66,18 @@ public class SvLoginRegister extends HttpServlet {
         
         int cedula=Integer.parseInt(request.getParameter("cedula"));
         String contrasenia=request.getParameter("contrasenia");
-        System.out.println(cedula+contrasenia);
+ 
         
         ArrayList<Usuarios> users = PersistenciaArchivo.deserializarUsuarios(context);
         String ingreso=Metodos.ingresoUsuarios(cedula, contrasenia, users);
-
+        Usuarios user= Metodos.encontrarUsuario(cedula, users);
          if(ingreso.equals("no")){
            
             request.getRequestDispatcher("index.jsp?ingreso=" + ingreso).forward(request, response);
          }else{
             request.getSession().setAttribute("usuario", ingreso);
             request.getSession().setAttribute("cedula", cedula);
+             request.getSession().setAttribute("penalizacion", user.getPenalizacion());
             response.sendRedirect("login.jsp");
          }           
        

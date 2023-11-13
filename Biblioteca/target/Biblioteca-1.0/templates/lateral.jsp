@@ -24,6 +24,17 @@
 
                 </ul>               
             </li>
+            <p class="d-inline-flex gap-1">
+            <a class="nav-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+             Tus penalizaciones
+            </a>
+
+          </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+       Tienes <%=session.getAttribute("penalizacion")%> penalizaciones.
+      </div>
+    </div>
             <a href="index.jsp?alert=salida" class="btn btn-outline-salir" >Cerrar sesion</a>
             
         </ul>

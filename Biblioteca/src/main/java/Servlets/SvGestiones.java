@@ -74,14 +74,20 @@ public class SvGestiones extends HttpServlet {
          int id =Integer.parseInt(request.getParameter("id"));
          int cedula=Integer.parseInt(request.getParameter("cedula"));
          String tiempo=request.getParameter("tiempo");
+         int penalizacion=Integer.parseInt(request.getParameter("penalizacion"));
          Prestamo prestado=new Prestamo(cedula,tiempo);
          Biblioteca libros = new Biblioteca(); //creacion de un objeto tipo biblioteca
          ServletContext context = getServletContext(); //variable necesaria para obtener el contexto del servlet   
          //se lee la informacion de los objetos ya guardados y se deserializan
          libros = PersistenciaArchivo.deserializarBiblioteca(context);//
-         libros.prestarLibro(id, prestado);
+         String alert="noPrestado";
+         if(penalizacion<3){
+             libros.prestarLibro(id, prestado);
+             alert="prestado";
+         } 
+         
          PersistenciaArchivo.serializarBiblioteca(libros, context);
-         response.sendRedirect("biblioteca.jsp?alert=prestado");
+         response.sendRedirect("biblioteca.jsp?alert="+alert);
     }
 
     /**
