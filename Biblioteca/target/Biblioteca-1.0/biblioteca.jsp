@@ -236,5 +236,6 @@ else if (alert != null && alert.equals("noPrestado")) {
 
 </script>
 
+<%@include file= "templates/footer2.jsp" %> 
 <%@include file= "templates/footer.jsp" %> 
 

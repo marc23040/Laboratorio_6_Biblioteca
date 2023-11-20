@@ -92,6 +92,7 @@
         </div>
     </div>
 </div>
+<%if(session.getAttribute("cedula")!=null){%>
 <footer style="background-color: #5e3824; margin-left: -0px; margin-right: -0px;">
     <div class="container d-flex justify-content-between align-items-center flex-wrap">
         <a href="login.jsp" style="margin-left: 50px; margin-right: 50px; margin-top: 10px;font-size: 18px; color: #ffffff;">Inicio</a>
@@ -107,7 +108,7 @@
         <p class="text-center w-100" style="font-size: 14px; color: #ffffff;">&copy; 2023 Tu Empresa. Todos los derechos reservados.</p>
     </div>
 </footer>
-            
+ <%}%>           
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
