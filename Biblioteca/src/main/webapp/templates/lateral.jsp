@@ -24,6 +24,9 @@
 
                 </ul>               
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Penalizaciones.jsp">Sistema penalizaciones</a>
+            </li>
             <p class="d-inline-flex gap-1">
             <a class="nav-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
              Tus penalizaciones

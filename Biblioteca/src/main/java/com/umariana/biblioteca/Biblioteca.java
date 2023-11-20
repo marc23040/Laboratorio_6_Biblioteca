@@ -188,6 +188,7 @@ public class Biblioteca implements Serializable{
         Nodo actual = primero; // Comenzamos desde el primer nodo
         
         String libros = "";
+        libros="<div class=\"row row-cols-1 row-cols-md-4 g-4\">";  
         boolean encontrado=false;
             while (actual != null) {
                 Libro libro = actual.getLibro();
@@ -199,7 +200,7 @@ public class Biblioteca implements Serializable{
                 actual=actual.getSiguiente();
                
             }
-            
+            libros+="</div>";
             if (!encontrado){
                 libros= noEncontrado();
                 }
@@ -265,7 +266,7 @@ public class Biblioteca implements Serializable{
     }
         public String librosPrestados(int cedula) {
         Nodo actual = primero; // Comenzamos desde el primer nodo
-        
+     
         String libros = "";
         libros+=" <div class=\"row row-cols-1 row-cols-md-4 g-4\">";     
          boolean encontrado=false;
@@ -303,6 +304,7 @@ public class Biblioteca implements Serializable{
         Nodo actual = primero; // Comenzamos desde el primer nodo      
         String libros = "";
          boolean encontrado=false;
+           libros+=" <div class=\"row row-cols-1 row-cols-md-4 g-4\">";  
             while (actual != null) {
                 Libro libro = actual.getLibro();
 
@@ -313,6 +315,7 @@ public class Biblioteca implements Serializable{
                 }
                 actual=actual.getSiguiente();
             }
+            libros+="</div>";
             if (!encontrado){
                 libros= noEncontrado();
                 }
@@ -323,6 +326,7 @@ public class Biblioteca implements Serializable{
         Nodo actual = primero; // Comenzamos desde el primer nodo      
         String libros = "";
         boolean encontrado=false;
+        libros+=" <div class=\"row row-cols-1 row-cols-md-4 g-4\">";     
             while (actual != null) {
                 Libro libro = actual.getLibro();
 
@@ -334,6 +338,7 @@ public class Biblioteca implements Serializable{
                 }
                 actual=actual.getSiguiente();
             }
+        libros+="</div>";
         if (!encontrado){
             libros= noEncontrado();
         }
@@ -400,7 +405,7 @@ public String librosOrdenadosPorAnoAscendente() {
                         "<center>\n" +
                         "<div class=\"card \" >\n" +
                         "<div class=\"card-body\">\n" +
-                        "<h1 style=\"font-family: 'bold', sans-serif; font-size: 5rem;  letter-spacing: 7px;\"> Nada por aquí...</h1>\n" +
+                        "<h1 style=\"font-family: 'Poppins', sans-serif; font-size: 3rem; \"> Nada por aquí...</h1>\n" +
                         "\n" +
                         "<a href=\"gestionLibros.jsp\"style=\"font-family: 'Regular', sans-serif;font-size:3rem; margin-top: -50px; color:#a86b4c;\"> Contribuye!</a>\n" +
                         "</div>\n" +

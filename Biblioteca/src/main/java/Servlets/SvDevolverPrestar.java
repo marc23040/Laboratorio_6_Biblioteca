@@ -55,7 +55,7 @@ public class SvDevolverPrestar extends HttpServlet {
             response.getWriter().write(libroHtml);
 
         } else {
-            // Maneja el caso en el que no se encuentra el 
+            // Maneja el caso en el que no se encuentra el libro
             response.setContentType("text/plain");
             response.setContentType("text/html; charset=UTF-8");
             response.getWriter().write("No disponible :(");

@@ -7,14 +7,15 @@ package com.umariana.biblioteca;
 import java.io.Serializable;
 
 /**
- *
- * @author maria
+ * Clase que representa un préstamo de la biblioteca.
  */
-public class Prestamo implements Serializable{
+public class Prestamo implements Serializable {
     
-    int cedula;
-    String tiempo;
+    // Atributos de la clase
+    int cedula;       // Identificación del usuario que realiza el préstamo
+    String tiempo;    // Duración del préstamo
 
+    // Constructores
     public Prestamo() {
     }
 
@@ -23,6 +24,7 @@ public class Prestamo implements Serializable{
         this.tiempo = tiempo;
     }
 
+    // Métodos de acceso (getters y setters)
     public int getCedula() {
         return cedula;
     }
@@ -38,7 +40,5 @@ public class Prestamo implements Serializable{
     public void setTiempo(String tiempo) {
         this.tiempo = tiempo;
     }
-    
-    
-    
 }
+

@@ -6,12 +6,16 @@
     ::before {
         box-sizing: border-box;
     }
-
+    html {
+  min-height: 100%;
+  position: relative;
+}
 
     body {
   
         font-family: 'Poppins', sans-serif;
         margin: 0;
+         height: 100%;
     }
 
     /*menu desplegable*/

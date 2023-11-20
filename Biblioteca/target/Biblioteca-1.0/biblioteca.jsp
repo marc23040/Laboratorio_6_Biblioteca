@@ -5,9 +5,10 @@
 <%@include file= "templates/lateral.jsp" %>
 <%@include file= "templates/navbar.jsp" %>
 <%@include file= "styles/stylelogin.jsp" %>
+<!-- Sección de scripts que controlan las notificaciones -->
 <%
     ServletContext context = getServletContext();
-   
+    // Parámetros de la solicitud HTTP
     String tabla = "";
     String ordenarr = request.getParameter("ordenar");
     String buscar= request.getParameter("buscar");
@@ -15,8 +16,12 @@
     String ced = request.getParameter("cedula");
     String mensaje1="TODOS LOS LIBROS";
     String mensaje2="que desees";
+    // Construcción de la tabla mediante el metodo listar
     tabla = Metodos.listar(context, ordenarr,ced, buscar);
     String a="ban";
+     // Obtención de parámetros y declaración de variables
+    
+    // Condicionales para asignar mensajes
     if(ordenarr!=null && ordenarr.equals("alquilados")){
      mensaje1="LIBROS PRESTADOS";  
      mensaje2="no olvides regresarlos.";
@@ -34,9 +39,11 @@
      mensaje2="seccion de libros recientes.";
      a="";
     }
+    // Obtención de otros parámetros
      String penalizaciones=request.getParameter("penalizacion");
     String alert = request.getParameter("alert");
- 
+
+    // Condicionales para manejo de alertas
     if (alert != null && alert.equals("prestado")) {
 %>
 <script>
@@ -48,6 +55,7 @@
 
 <%
     } 
+
 else if (alert != null && alert.equals("noPrestado")) {
 %>
 <script>
@@ -104,31 +112,38 @@ else if (alert != null && alert.equals("noPrestado")) {
 %>
 
 
-<div class="container">
+<div class="container" style=" padding-bottom: 81px; min-height: calc(100% - 81px); position: relative;" >
     <br>
     <div class="box" style=" 
  
   background-color: #f8f1e9;
-  border-radius: 3.3rem;
+  border-radius: 3.3rem;box-shadow: 0 10px 40px -5px #615145;
 ">
+        <br>
    <center>
-        <h1 style="font-family: 'bold', sans-serif; font-size: 8rem;  letter-spacing: 7px;"> <%=mensaje1%></h1>
-        <h2 style="font-family: 'Regular', sans-serif;font-size:4rem; margin-top: -50px;"> <%=mensaje2%></h2>
+        <h1 style="font-family: 'Poppins', sans-serif; font-size: 5rem;font-weight: bold; "> <%=mensaje1%></h1>
+        <h2 style="font-family: 'Poppins', sans-serif;font-size:3rem; margin-top: -20px;"> <%=mensaje2%></h2>
      </center>
+     <br>
    </div>
-     <%if (a!=null && a.equals("ban")){
-
-%>
+     <br>
+       <!-- Sección de tarjetas -->
+   
     <div class="row">
-        
+        <!-- Primera Columna - "Tus libros alquilados" -->
         <div class="col">
-            <a href="biblioteca.jsp?ordenar=alquilados&cedula=5454">
+            <!-- Enlace a la página biblioteca.jsp con parámetros de ordenar y cedula -->
+            <a href="biblioteca.jsp?ordenar=alquilados&cedula=<%=session.getAttribute("cedula")%>">
+                <!-- Tarjeta con estilo y bordes redondeados -->
             <div class="card" style="margin-top:10px;margin-bottom:30px;margin-right:30px; border-radius: 20px;">
             <div class="card-body">
+                <!-- Fila dentro de la tarjeta -->
                 <div class="row">
                     <div class="col-4" style="display: flex;align-items: center;justify-content: center;">
+                     
                          <img src="https://i.pinimg.com/564x/c9/1f/fb/c91ffb578ea1b307d871b5a5294fa390.jpg" width="100%">
                     </div>
+                    <!-- Columna con título y descripción -->
                     <div class="col">
                         <h3>Tus libros</h3>
                         <p>Revisa tus libros alquilados. </p>
@@ -138,14 +153,19 @@ else if (alert != null && alert.equals("noPrestado")) {
           </div>
              </a>
         </div>
+        <!-- Segunda Columna - "Libros Disponibles" -->
         <div class="col">
+            <!-- Enlace a la página biblioteca.jsp con parámetros de ordenar y cedula (cedula=null) -->
             <a href="biblioteca.jsp?ordenar=disponibles&cedula=null">
+            <!-- Tarjeta con estilo y bordes redondeados -->
             <div class="card" style="margin-top:10px;margin-bottom:30px;margin-right:30px; border-radius: 20px;">
             <div class="card-body">
+                  <!-- Fila dentro de la tarjeta -->
                 <div class="row">
                     <div class="col-4" style="display: flex;align-items: center;justify-content: center;">
                          <img src="https://i.pinimg.com/564x/1e/31/6a/1e316a841d19d6b98b1b1621d53701d1.jpg" width="100%">
                     </div>
+                    <!-- Columna con título y descripción -->
                     <div class="col">
                         <h3>Disponibles</h3>
                         <p>Encuentra los disponibles. </p>
@@ -155,10 +175,15 @@ else if (alert != null && alert.equals("noPrestado")) {
           </div>
              </a>
         </div>
+        <!-- Tercera Columna - "Libros Más Nuevos" -->
         <div class="col">
+        <!-- Enlace a la página biblioteca.jsp con parámetros de ordenar y cedula (cedula=null) -->                        
             <a href="biblioteca.jsp?ordenar=recientes&cedula=null">
+                 
             <div class="card" style="margin-top:10px;margin-bottom:30px;margin-right:30px; border-radius: 20px;">
             <div class="card-body">
+                
+                <!-- Fila dentro de la tarjeta -->
                 <div class="row">
                     <div class="col-4" style="display: flex;align-items: center;justify-content: center;">
                          <img src="https://i.pinimg.com/564x/58/96/a6/5896a6b9923a0c0ae5a2b6fec8698db0.jpg" width="100%">
@@ -174,7 +199,7 @@ else if (alert != null && alert.equals("noPrestado")) {
         </div>
            
     </div>
-    <%}%>
+  
     <br>
     <%@include file= "templates/Generos.jsp" %> 
     <br>
@@ -188,7 +213,7 @@ else if (alert != null && alert.equals("noPrestado")) {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script src="scripts/script_login.js"></script>
 <script>
-
+    // Funciones de notificación existentes
     function prestado() {
         Swal.fire({
             icon: 'success',
@@ -220,8 +245,8 @@ else if (alert != null && alert.equals("noPrestado")) {
         Swal.fire({
         icon: "warning",
         title: "Oops...",
-        text: "Regresaste el libro. Tienes <%=penalizaciones%> penalizaciones !",
-        footer: '<a href="#">Como solucionar?</a>'
+        text: "Regresaste el libro, pero... Tienes <%=penalizaciones%> penalizaciones !",
+        footer: '<a href="Penalizaciones.jsp">Como solucionar?</a>'
       });
     }
      function penalizacionCompleta() {
@@ -229,13 +254,12 @@ else if (alert != null && alert.equals("noPrestado")) {
         icon: "warning",
         title: "Oops...",
         text: "Has devuelto el libro, pero...Tienes <%=penalizaciones%> penalizaciones ! No puedes alquilar más libros :(",
-        footer: '<a href="#">Se trata de un error? Comunicate!</a>'
+        footer: '<a href="Penalizaciones.jsp">Se trata de un error? Consultalo!</a>'
       });
     }
 
 
 </script>
-
 <%@include file= "templates/footer2.jsp" %> 
 <%@include file= "templates/footer.jsp" %> 
 

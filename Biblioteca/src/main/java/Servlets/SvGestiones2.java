@@ -47,38 +47,39 @@ public class SvGestiones2 extends HttpServlet {
         //creamos un nuevo libro y llamamos al metodo encontrarLibro para adquirir sus atributos
         //enviamos como parametro el titulo para que el metodo lo filtre en el array 
         Libro li = libros.encontrarLibro(id);
-
+        String titulo=li.getTitulo();
+        System.out.println(titulo);
         if (li != null) {
-            String libroHtml ="<div class=\"input-group mb-3\">\n" +
-"                        <span class=\"input-group-text\" id=\"basic-addon1\">Id</span>\n" +
-"                        <input type=\"text\" name=\"id\" id=\"id\" class=\"form-control\" aria-describedby=\"basic-addon1\" value="+id+" readonly>\n" +
-"                    </div>"+ "<div class=\"input-group mb-3\">\n" +
-"                        <span class=\"input-group-text\" id=\"basic-addon1\">Titulo</span>\n" +
-"                        <input type=\"text\" name=\"titulo\" id=\"titulo\" class=\"form-control\" aria-describedby=\"basic-addon1\"  value="+li.getTitulo()+" required>\n" +
-"                    </div>"+ "<div class=\"input-group mb-3\">\n" +
-"                        <span class=\"input-group-text\" id=\"basic-addon1\">Autor</span>\n" +
-"                        <input type=\"text\" id=\"autor\" name=\"autor\" class=\"form-control\" aria-describedby=\"basic-addon1\" value="+li.getAutor()+" required>\n" +
-"                    </div>"+"<div class=\"input-group mb-3\">\n" +
-"                        <span class=\"input-group-text\" id=\"basic-addon1\">Año</span>\n" +
-"                        <input type=\"text\" id=\"anio\" name=\"anio\" class=\"form-control\" aria-describedby=\"basic-addon1\" value="+li.getAnoPublicacion()+" required>\n" +
-"                    </div>"+"<div class=\"input-group mb-3\">\n" +
-"                        <span class=\"input-group-text\" id=\"basic-addon1\">Genero</span>\n" +
-"                        <select class=\"form-select\" name=\"genero\" aria-label=\"Default select example\">\n" +
-"                        <option selected value="+li.getGenero()+">"+li.getGenero()+"</option>\n" +
-"                        <option value=\"Aventuras\">Aventuras</option>\n" +
-"                        <option value=\"Ciencia Ficcion\">Ciencia Ficción</option>\n" +
-"                        <option value=\"Romance\">Romance</option>\n" +
-"                        <option value=\"Fantasia\">Fantasia</option>\n" +
-"                        <option value=\"Humor\">Humor</option>\n" +
-"                        <option value=\"Poesia\">Poesia</option>\n" +
-"                        <option value=\"Mitologia\">Mitologia</option>\n" +
-"                        <option value=\"Teatro\">Teatro</option>\n" +
-"                        <option value=\"Infantil\">Infantil</option>\n" +
-"                        <option value=\"Escolar\">Escolar</option>\n" +
-"                      </select>\n" +
-"                    </div>"+"<div class=\"input-group mb-3\">\n" +
-"                        <span class=\"input-group-text\" id=\"basic-addon1\">Portada</span>\n" +
-"                       <input type=\"file\" name=\"fotoPortada\" class=\"form-control\" id=\"fotoPortada\" accept=\"image/*\" required>\n" +
+            String libroHtml ="<div class=\"input-group mb-3\">" +
+"                        <span class=\"input-group-text\" id=\"basic-addon1\">Id</span>" +
+"                        <input type=\"text\" name=\"id\" id=\"id\" class=\"form-control\" aria-describedby=\"basic-addon1\" value=\""+id+"\"  readonly>" +
+"                    </div>"+ "<div class=\"input-group mb-3\">" +
+"                        <span class=\"input-group-text\" id=\"basic-addon1\">Titulo</span>" +
+"                        <input type=\"text\" name=\"titulo\" id=\"titulo\" class=\"form-control\" aria-describedby=\"basic-addon1\"  value=\""+titulo+"\" required>" +
+"                    </div>"+ "<div class=\"input-group mb-3\">" +
+"                        <span class=\"input-group-text\" id=\"basic-addon1\">Autor</span>" +
+"                        <input type=\"text\" id=\"autor\" name=\"autor\" class=\"form-control\" aria-describedby=\"basic-addon1\" value=\""+li.getAutor()+"\"  required>" +
+"                    </div>"+"<div class=\"input-group mb-3\">" +
+"                        <span class=\"input-group-text\" id=\"basic-addon1\">Año</span>" +
+"                        <input type=\"number\" id=\"anio\" name=\"anio\" class=\"form-control\" aria-describedby=\"basic-addon1\" value=\""+li.getAnoPublicacion()+"\"  required>" +
+"                    </div>"+"<div class=\"input-group mb-3\">" +
+"                        <span class=\"input-group-text\" id=\"basic-addon1\">Genero</span>" +
+"                        <select class=\"form-select\" name=\"genero\" aria-label=\"Default select example\">" +
+"                        <option selected value=\""+li.getGenero()+"\" >"+li.getGenero()+"</option>" +
+"                        <option value=\"Aventuras\">Aventuras</option>" +
+"                        <option value=\"Ciencia Ficcion\">Ciencia Ficción</option>" +
+"                        <option value=\"Romance\">Romance</option>" +
+"                        <option value=\"Fantasia\">Fantasia</option>" +
+"                        <option value=\"Humor\">Humor</option>" +
+"                        <option value=\"Poesia\">Poesia</option>" +
+"                        <option value=\"Mitologia\">Mitologia</option>" +
+"                        <option value=\"Teatro\">Teatro</option>" +
+"                        <option value=\"Infantil\">Infantil</option>" +
+"                        <option value=\"Escolar\">Escolar</option>" +
+"                      </select>" +
+"                    </div>"+"<div class=\"input-group mb-3\">" +
+"                        <span class=\"input-group-text\" id=\"basic-addon1\">Portada</span>" +
+"                       <input type=\"file\" name=\"fotoPortada\" class=\"form-control\" id=\"fotoPortada\" accept=\"image/*\" required>" +
 "                    </div>";
                     
                    
