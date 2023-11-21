@@ -66,18 +66,22 @@ public class SvAnadirVer extends HttpServlet {
         //enviamos como parametro el titulo para que el metodo lo filtre en el array 
         Libro li = libros.encontrarLibro(id);
 
+        // Verificar si el objeto Libro (li) no es nulo
         if (li != null) {
+            // Construir una cadena HTML con información del libro
             String libroHtml = "<h2>Nombre: " + li.getTitulo() + "</h2>"
                     + "<p>Autor: " + li.getAutor() + "</p>"
                     + "<p>Año publicado: " + li.getAnoPublicacion() + "</p>"
                     + "<img src='imagenes/" + li.getFotoPortada() + "' alt='" + li.getFotoPortada() + "' width='100%'/>";
+            // Establecer el tipo de contenido de la respuesta
             response.setContentType("text/html; charset=UTF-8");
+            // Escribir la cadena HTML en el cuerpo de la respuesta
             response.getWriter().write(libroHtml);
 
         } else {
-            // Maneja el caso en el que no se encuentra el perro
-            response.setContentType("text/plain");
-            response.getWriter().write("Libro no encontrado");
+            /// Manejar el caso en el que el objeto Libro es nulo
+            response.setContentType("text/plain");// Establecer el tipo de contenido como texto plano
+            response.getWriter().write("Libro no encontrado"); // Escribir un mensaje indicando que el libro no está disponible
         }
     }
 
@@ -101,6 +105,7 @@ public class SvAnadirVer extends HttpServlet {
         String filePath = uploadDirectory + File.separator + fileName;
         System.out.println("filePath: " + filePath);
 
+         // Lectura de la imagen del formulario y escritura en un archivo en el servidor
         try (InputStream input = imagenPart.getInputStream(); OutputStream output = new FileOutputStream(filePath)) {
 
             byte[] buffer = new byte[1024];
@@ -109,9 +114,10 @@ public class SvAnadirVer extends HttpServlet {
                 output.write(buffer, 0, length);
             }
         }
-
+        //Obtener el contexto del servlet
         ServletContext context = getServletContext();
 
+        // Obtención de parámetros del formulario 
         String titulo = request.getParameter("titulo");
         String autor = request.getParameter("autor");
         int anio = Integer.parseInt(request.getParameter("anio"));
@@ -121,16 +127,22 @@ public class SvAnadirVer extends HttpServlet {
         
         Biblioteca libros = new Biblioteca();
          
+         // Deserialización de la biblioteca de libros desde el archivo
         libros = PersistenciaArchivo.deserializarBiblioteca(context);
+        // Verificación si la biblioteca de libros es nula (primera vez)
         if (libros == null) {
             libros = new Biblioteca();
         }
+        // Generación de un nuevo ID para el libro
         int id=libros.id()+1;
+        // Creación de un nuevo objeto Libro
         Libro libro = new Libro(id,titulo, autor, anio, fotoPortada,genero, null);
         
+        // Inserción del libro en la biblioteca
         libros.insertar(libro);
+        // Serialización de la biblioteca de libros actualizada y guardado en el archivo correspondiente
         PersistenciaArchivo.serializarBiblioteca(libros, context);
-    
+        // Redirección a la página "gestionLibros.jsp" indicando que el libro fue añadido con éxito
         response.sendRedirect("gestionLibros.jsp?alert=anadido");
     }
 

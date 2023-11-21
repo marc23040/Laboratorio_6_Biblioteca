@@ -14,6 +14,7 @@
     String buscar= request.getParameter("buscar");
     int cedula=0;
     String ced = request.getParameter("cedula");
+     String cambio = request.getParameter("cambio");
     String mensaje1="TODOS LOS LIBROS";
     String mensaje2="que desees";
     // Construcción de la tabla mediante el metodo listar
@@ -108,7 +109,29 @@ else if (alert != null && alert.equals("noPrestado")) {
         }
 
     }
+    if(cambio!=null && cambio.equals("no")){
+ %>
+<script>
 
+    $(document).ready(function () {
+        noCambio();
+    });
+
+</script>
+
+<%
+} else if(cambio!=null && cambio.equals("si")){
+%>
+<script>
+
+    $(document).ready(function () {
+        cambio();
+    });
+
+</script>
+
+<%
+}
 %>
 
 
@@ -255,6 +278,23 @@ else if (alert != null && alert.equals("noPrestado")) {
         title: "Oops...",
         text: "Has devuelto el libro, pero...Tienes <%=penalizaciones%> penalizaciones ! No puedes alquilar más libros :(",
         footer: '<a href="Penalizaciones.jsp">Se trata de un error? Consultalo!</a>'
+      });
+    }
+     function noCambio() {
+        Swal.fire({
+        icon: "error",
+        title: "Oops...",
+         showConfirmButton: false,
+        text: "No hemos podido cambiar la contraseña. Revisa que ingresaste la correcta :(",
+        timer: 1500
+      });
+    }
+     function cambio() {
+        Swal.fire({
+        icon: 'success',
+            title: 'Cambiaste la contraseña!',
+            showConfirmButton: false,
+            timer: 1500
       });
     }
 

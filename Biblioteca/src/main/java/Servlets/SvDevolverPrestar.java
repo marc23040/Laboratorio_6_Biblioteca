@@ -49,15 +49,21 @@ public class SvDevolverPrestar extends HttpServlet {
         //enviamos como parametro el titulo para que el metodo lo filtre en el array 
         Libro li = libros.encontrarLibro(id);
 
+        // Verificación si el objeto 'li' (Libro) no es nulo
         if (li != null) {
+            // Sección para el caso en que 'li' (Libro) no sea nulo 
+            // Construcción de un campo de entrada HTML oculto para el ID del libro
             String libroHtml = "<input name='id' type='text' value="+id+" hidden>";
+            // Configuración de la respuesta HTTP
             response.setContentType("text/html; charset=UTF-8");
+            // Envío del campo de entrada HTML como respuesta al cliente
             response.getWriter().write(libroHtml);
 
         } else {
             // Maneja el caso en el que no se encuentra el libro
             response.setContentType("text/plain");
             response.setContentType("text/html; charset=UTF-8");
+            // Envío de un mensaje indicando que el libro no está disponible
             response.getWriter().write("No disponible :(");
         }
     }
@@ -66,23 +72,35 @@ public class SvDevolverPrestar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         // Extracción y conversión de parámetros del request a enteros
          int cedula =Integer.parseInt(request.getParameter("cedula"));
                 int id =Integer.parseInt(request.getParameter("id"));
                 int tiempo =Integer.parseInt(request.getParameter("dias"));
-         Biblioteca libros = new Biblioteca(); //creacion de un objeto tipo biblioteca
-         ServletContext context = getServletContext(); //variable necesaria para obtener el contexto del servlet   
-         //se lee la informacion de los objetos ya guardados y se deserializan
-         libros = PersistenciaArchivo.deserializarBiblioteca(context);//
+                
+          Biblioteca libros = new Biblioteca(); //creacion de un objeto tipo biblioteca
+          ServletContext context = getServletContext(); //variable necesaria para obtener el contexto del servlet   
+          //se lee la informacion de los objetos ya guardados y se deserializan
+          libros = PersistenciaArchivo.deserializarBiblioteca(context);
+          // Encontrar el libro por su identificador (id)
           Libro libro=libros.encontrarLibro(id);
-         int penalizacion=Metodos.analizarPenalizacion(libro.getPrestado().getTiempo(), tiempo);
+          // Analizar la penalización basada en el tiempo de préstamo y el tiempo actual
+          int penalizacion=Metodos.analizarPenalizacion(libro.getPrestado().getTiempo(), tiempo);
+          // Deserializar la lista de usuarios desde el contexto de la aplicación
           ArrayList<Usuarios> users = PersistenciaArchivo.deserializarUsuarios(context);
+          // Encontrar al usuario por su número de cédula
           Usuarios user=Metodos.encontrarUsuario(cedula, users);
+          // Actualizar la penalización del usuario
           user.setPenalizacion(user.getPenalizacion()+penalizacion);
+          // Serializar la lista actualizada de usuarios de nuevo en el contexto de la aplicación
           PersistenciaArchivo.serializarUsuarios(users, context);
-         libros.devolverLibro(id);
+          // Realizar la operación de devolver el libro en la biblioteca
+          libros.devolverLibro(id);
 
+         // Serializar la biblioteca después de la operación de devolución
          PersistenciaArchivo.serializarBiblioteca(libros, context);
-            request.getSession().setAttribute("penalizacion", user.getPenalizacion());
+         // Actualizar la sesión del usuario con la nueva penalización
+         request.getSession().setAttribute("penalizacion", user.getPenalizacion());
+         // Redirigir a la página de la biblioteca con un mensaje de alerta y la penalización actualizada
          response.sendRedirect("biblioteca.jsp?alert=devolver&penalizacion="+user.getPenalizacion());
     }
 

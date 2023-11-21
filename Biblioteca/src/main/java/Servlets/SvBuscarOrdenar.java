@@ -34,27 +34,34 @@ public class SvBuscarOrdenar extends HttpServlet {
         String genero = request.getParameter("genero");
         //Redirigimos con la variable para que cambie la tabla
         String ruta="biblioteca.jsp?ordenar="+terminoBusqueda+"&cedula="+request.getParameter("cedula");
+        // Verificación si se proporcionó el parámetro de género y no el de ordenar
         if(genero!=null && terminoBusqueda==null){
+             // Si se proporcionó el parámetro de género pero no el de ordenar, redirigimos a la página de libros por género
             ruta="librosGeneros.jsp?genero="+genero;
         }
+        // Redirección a la URL construida
         response.sendRedirect(ruta);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+          // Se obtienen los parámetros de búsqueda desde el formulario
           String terminoBusqueda = request.getParameter("buscar");
           String terminoTabla = request.getParameter("buscarTabla");
           String terminoGeneros = request.getParameter("buscarGeneros");
-           String ruta="biblioteca.jsp?buscar="+terminoBusqueda;
+          // Se construye la ruta inicial para la redirección
+          String ruta="biblioteca.jsp?buscar="+terminoBusqueda;
 
+          // Verificación si se proporcionó el parámetro de búsqueda para la tabla
           if(terminoTabla!=null){
+              // Si se proporcionó el parámetro de búsqueda para la tabla, redirigimos a la página de listado de libros
            ruta="listarLibros.jsp?buscar="+terminoTabla;   
           } else if(terminoGeneros!=null){
+            // Si se proporcionó el parámetro de búsqueda para géneros, redirigimos a la página de libros por género
             ruta="librosGeneros.jsp?buscar="+terminoGeneros+"&genero="+request.getParameter("genero");
           }
         //Redirigimos con la variable para que cambie la tabla
-       
         response.sendRedirect(ruta);
     }
 

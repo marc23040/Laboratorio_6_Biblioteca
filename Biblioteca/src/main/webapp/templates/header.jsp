@@ -25,16 +25,19 @@
         <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
         
         <style>
-        @font-face {
+        /* Definición de la fuente 'Handmade' */
+            @font-face {
             font-family: 'Handmade';
             src: url('Fonts/Handmade.otf') format('opentype');
 
         }
+        /* Definición de la fuente 'Regular' */
         @font-face {
             font-family: 'Regular';
             src: url('Fonts/Abecedary-Regular.ttf') format('truetype');
 
         }
+        /* Definición de la fuente 'bold' */
         @font-face {
             font-family: 'bold';
             src: url('Fonts/Farmhouse.otf') format('opentype');
