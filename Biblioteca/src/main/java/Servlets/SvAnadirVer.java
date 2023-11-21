@@ -23,31 +23,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 /**
- *
- * @author maria
+ * SvAnadirVer
+ * @author Maria- Juan- Alejandro- Juan 
  */
 @MultipartConfig
 @WebServlet(name = "SvAnadirVer", urlPatterns = {"/SvAnadirVer"})
 public class SvAnadirVer extends HttpServlet {
 
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
     }
-
+    
     /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
+     * Servlet para visualizar
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -84,7 +73,9 @@ public class SvAnadirVer extends HttpServlet {
             response.getWriter().write("Libro no encontrado"); // Escribir un mensaje indicando que el libro no está disponible
         }
     }
-
+    /**
+     * Servlet para añadir
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -146,9 +137,5 @@ public class SvAnadirVer extends HttpServlet {
         response.sendRedirect("gestionLibros.jsp?alert=anadido");
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

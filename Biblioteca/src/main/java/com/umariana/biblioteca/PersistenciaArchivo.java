@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 
 /**
  * Clase que proporciona métodos para la persistencia de datos en archivos.
+ * @author Maria- Juan- Alejandro- Juan 
  */
 public class PersistenciaArchivo {
 

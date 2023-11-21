@@ -53,7 +53,7 @@
           <!-- Contenedor de formularios con clase "forms-wrap" -->
         <div class="forms-wrap">
             <!-- Formulario de inicio de sesión -->
-          <form action="SvLoginRegister" method="POST" autocomplete="off" class="sign-in-form">
+          <form action="SvLogin" method="POST" autocomplete="off" class="sign-in-form">
                <!-- Encabezado del formulario -->
             <div class="heading">
               <h2>Ingresa Aqui</h2>
@@ -81,7 +81,7 @@
           </form>
 
           <!-- Formulario de registro -->
-          <form action="SvLoginRegister" method="GET" autocomplete="off" class="sign-up-form">
+          <form action="SvRegister" method="POST" autocomplete="off" class="sign-up-form">
             <!-- Encabezado del formulario -->
             <div class="heading">
               <h2>Registrate</h2>

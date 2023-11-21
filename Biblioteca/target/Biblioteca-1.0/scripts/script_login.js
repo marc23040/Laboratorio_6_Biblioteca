@@ -6,3 +6,4 @@ toggler.addEventListener("click", function () {
     // Alternar la clase "collapsed" en el elemento con el id "sidebar"
     document.querySelector("#sidebar").classList.toggle("collapsed");
 });
+  

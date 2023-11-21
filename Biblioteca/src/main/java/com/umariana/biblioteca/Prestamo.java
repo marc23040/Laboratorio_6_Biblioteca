@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 /**
  * Clase que representa un préstamo de la biblioteca.
+ * @author Maria- Juan- Alejandro- Juan 
  */
 public class Prestamo implements Serializable {
     
@@ -18,7 +19,12 @@ public class Prestamo implements Serializable {
     // Constructores
     public Prestamo() {
     }
-
+    
+    /**
+     * Constructor
+     * @param cedula
+     * @param tiempo 
+     */
     public Prestamo(int cedula, String tiempo) {
         this.cedula = cedula;
         this.tiempo = tiempo;

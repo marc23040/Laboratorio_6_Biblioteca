@@ -1,4 +1,5 @@
 com\umariana\biblioteca\Metodos.class
+Servlets\SvRegister.class
 Servlets\SvBuscarOrdenar.class
 Servlets\SvDevolverPrestar.class
 com\umariana\biblioteca\resources\JakartaEE8Resource.class
@@ -6,11 +7,11 @@ com\umariana\biblioteca\Prestamo.class
 Servlets\SvGestiones.class
 Servlets\SvEliminarEditar.class
 com\umariana\biblioteca\PersistenciaArchivo.class
+Servlets\SvLogin.class
 com\umariana\biblioteca\Usuarios.class
 com\umariana\biblioteca\Biblioteca.class
 com\umariana\biblioteca\Libro.class
 com\umariana\biblioteca\JakartaRestConfiguration.class
 Servlets\SvGestiones2.class
 com\umariana\biblioteca\Nodo.class
-Servlets\SvLoginRegister.class
 Servlets\SvAnadirVer.class

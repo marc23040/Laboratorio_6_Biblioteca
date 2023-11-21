@@ -12,6 +12,7 @@ import java.io.Serializable;
 /**
  * Esta clase representa un nodo en una lista enlazada utilizada para un sistema de gestión de bibliotecas.
  * Cada nodo contiene información sobre un libro (Libro) y referencias al siguiente y al anterior nodo.
+ * @author Maria- Juan- Alejandro- Juan 
  */
 public class Nodo implements Serializable {
 

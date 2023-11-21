@@ -5,14 +5,12 @@
 package Servlets;
 
 import com.umariana.biblioteca.Biblioteca;
-import com.umariana.biblioteca.Libro;
 import com.umariana.biblioteca.PersistenciaArchivo;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -23,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 /**
- *
- * @author maria
+ * SvEliminarEditar
+ * @author Maria- Juan- Alejandro- Juan 
  */
 @MultipartConfig
 @WebServlet(name = "SvEliminarEditar", urlPatterns = {"/SvEliminarEditar"})
@@ -33,7 +31,9 @@ public class SvEliminarEditar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
-
+     /**
+     * Eliminar
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -54,7 +54,9 @@ public class SvEliminarEditar extends HttpServlet {
         response.sendRedirect("listarLibros.jsp?alert=eliminar");
     }
 
-
+     /**
+     * Editar
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

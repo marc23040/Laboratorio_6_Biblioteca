@@ -20,4 +20,3 @@
         <p class="text-center w-100" style="font-size: 14px; color: #ffffff;">&copy; 2023 Aurora Literaria. Todos los derechos reservados.</p>
     </div>
 </footer>
-s

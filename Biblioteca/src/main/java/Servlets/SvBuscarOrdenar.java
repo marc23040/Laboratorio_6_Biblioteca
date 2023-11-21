@@ -13,19 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author maria
+ * SvBuscarOrdenar
+ * @author Maria- Juan- Alejandro- Juan 
  */
 @WebServlet(name = "SvBuscarOrdenar", urlPatterns = {"/SvBuscarOrdenar"})
 public class SvBuscarOrdenar extends HttpServlet {
 
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
-
-
+    /**
+     * Filtrar
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,7 +38,9 @@ public class SvBuscarOrdenar extends HttpServlet {
         // Redirección a la URL construida
         response.sendRedirect(ruta);
     }
-
+    /**
+     * Buscar
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

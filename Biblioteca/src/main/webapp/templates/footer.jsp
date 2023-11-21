@@ -47,7 +47,7 @@
             </div>
             <div class="modal-body">
                 <!-- Formulario para alquilar -->
-                <form action="SvGestiones" method="POST">
+                <form action="SvDevolverPrestar" method="GET">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Tiempo</span>
                         <select class="form-select" name="tiempo" aria-label="¿Cuánto tiempo?" required>
@@ -56,6 +56,7 @@
                             <option value="1 mes">1 mes</option>
                         </select>
                     </div>
+                     <!-- Campo que se llena por la solucitud de Ajax-->
                     <div id="alquilar-details"></div>
                     <!-- Campos ocultos con la cédula y penalización del usuario -->
                     <input name="cedula" value="<%=session.getAttribute("cedula")%>" hidden>
@@ -85,6 +86,7 @@
                         <input type="number" class="form-control" placeholder="Días que tuviste el libro" min="1" step="1" name="dias" required>
                         <span class="input-group-text" id="basic-addon2">Días</span>
                     </div>
+                    <!-- Campo que se llena por la solucitud de Ajax-->
                     <div id="devolver-details"></div>
                     <!-- Campo oculto con la cédula del usuario -->
                     <input name="cedula" value="<%=session.getAttribute("cedula")%>" hidden>
@@ -100,6 +102,7 @@
 
 <!-- Scripts necesarios (jQuery) -->
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
 <script>
     // Función para cargar detalles al alquilar
     $(document).ready(function () {
@@ -107,10 +110,10 @@
             var alq = $(this).data('nombre');
 
             $.ajax({
-                url: 'SvGestiones?id=' + alq,
+                url: 'SvGestiones?id=' + alq, //Solicitud al servlet para llenar la id
                 method: 'GET',
                 success: function (data) {
-                    $('#alquilar-details').html(data);
+                    $('#alquilar-details').html(data); 
                     $('#alquilarModal').modal('show'); // Muestra el modal una vez que se han cargado los detalles del libro
                 },
                 error: function () {
@@ -126,7 +129,7 @@
             var alq = $(this).data('nombre');
 
             $.ajax({
-                url: 'SvDevolverPrestar?id=' + alq,
+                url: 'SvGestiones?id=' + alq, //Solicitud al servlet para llenar la id
                 method: 'GET',
                 success: function (data) {
                     $('#devolver-details').html(data);
@@ -139,6 +142,7 @@
         });
     });
 </script>
+
 </body>
 
 </html>

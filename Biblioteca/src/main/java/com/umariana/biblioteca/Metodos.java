@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 
 /**
  * Clase que contiene métodos relacionados con la gestión de usuarios y libros en un sistema de biblioteca.
+ * @author Maria- Juan- Alejandro- Juan 
  */
 public class Metodos {
 

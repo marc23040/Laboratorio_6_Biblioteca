@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author maria
+ * @author Maria- Juan- Alejandro- Juan 
  */
 public class Libro implements Serializable {
 

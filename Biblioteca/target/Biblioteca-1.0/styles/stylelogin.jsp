@@ -1,6 +1,23 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+     /* Definición de la fuente 'Handmade' */
+            @font-face {
+            font-family: 'Handmade';
+            src: url('Fonts/Handmade.otf') format('opentype');
 
+        }
+        /* Definición de la fuente 'Regular' */
+        @font-face {
+            font-family: 'Regular';
+            src: url('Fonts/Abecedary-Regular.ttf') format('truetype');
+
+        }
+        /* Definición de la fuente 'bold' */
+        @font-face {
+            font-family: 'bold';
+            src: url('Fonts/Farmhouse.otf') format('opentype');
+
+        }
     *,
     ::after,
     ::before {
@@ -186,6 +203,46 @@
             width: auto;
         }
     }
-
+    .ah{
+        font-family: 'bold', sans-serif; font-size: 10rem; color:black;  letter-spacing: 2px;
+    } .box{
+         background-color: #f8f1e9; border-radius: 3.3rem;box-shadow: 0 10px 40px -5px #615145;
+    }   /* Contenedor de la imagen con estilo de posición relativa y fondo */
+    .image-container {
+        position: relative;
+        background-color: #f8f1e9;
+        border-radius: 3.3rem;
+        height: 400px;
+        width: 100%;
+        align-items: center;
+    }
+    /* Estilo de la imagen dentro del contenedor */
+    .image-container img {
+        width: 100%;
+        height: 50%;
+        background-color: #f8f1e9;
+        border-radius: 3.3rem;
+        height: 400px;
+        width: 100%;
+    }
+    /* Capa superpuesta para el efecto de superposición */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+        border-radius: 3.3rem;
+    }
+    /* Texto superpuesto con estilo de posición absoluta y centrado */
+    .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
 
 </style>
