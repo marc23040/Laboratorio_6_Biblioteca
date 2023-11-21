@@ -4,7 +4,7 @@
 <%@include file= "styles/stylelogin.jsp" %> <!-- Incluir los styles -->
 
 <!-- Container sistema de penalizaciones -->
-<div class="container" >
+<div class="container" style=" padding-bottom: 81px; min-height: calc(100% - 81px); position: relative;">
 
     <br>
     <div class="box" style="background-color: #f8f1e9;border-radius: 3.3rem;box-shadow: 0 10px 30px -5px #615145;">
@@ -124,7 +124,7 @@
             </table>
         </div></div>
 
-</div>
+</div><br>
 <!-- Pie de pagina -->
 <%@include file= "templates/footer2.jsp" %> 
 <%@include file= "templates/footer.jsp" %> <!-- Incluir footer -->

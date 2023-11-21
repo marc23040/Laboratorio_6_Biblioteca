@@ -71,6 +71,11 @@
                         <li><a class="dropdown-item" href="SvBuscarOrdenar?genero=Escolar">Escolar</a></li>                           
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gestionLibros.jsp" role="button">
+                        Agregar
+                    </a>
+                </li>
             </ul>
         </div>
 
