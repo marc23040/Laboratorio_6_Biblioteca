@@ -233,11 +233,8 @@ public class Biblioteca implements Serializable {
      */
     public String librosLogin() {
         Nodo actual = primero; // Comenzamos desde el primer nodo
-        String libros = "";
+        String libros = "<div class=\"row row-cols-1 row-cols-md-4 g-4\">"; // Inicia el contenedor de filas y columnas para las tarjetas
         boolean encontrado = false;
-
-        // Inicia el contenedor de filas y columnas para las tarjetas
-        libros = "<div class=\"row row-cols-1 row-cols-md-4 g-4\">";
 
         while (actual != null) {
             Libro libro = actual.getLibro();
@@ -268,8 +265,7 @@ public class Biblioteca implements Serializable {
     public String librosLoginBus(String buscar) {
         Nodo actual = primero; // Comenzamos desde el primer nodo
 
-        String libros = "";
-        libros = "<div class=\"row row-cols-1 row-cols-md-4 g-4\">";
+        String libros = "<div class=\"row row-cols-1 row-cols-md-4 g-4\">";
         boolean encontrado = false;
 
         while (actual != null) {
@@ -350,9 +346,8 @@ public class Biblioteca implements Serializable {
      */
     public String librosDisponibles() {
         Nodo actual = primero; // Comenzamos desde el primer nodo       
-        String libros = "";
+        String libros = "<div class=\"row row-cols-1 row-cols-md-4 g-4\">"; // Inicia el contenedor de filas y columnas para las tarjetas
         boolean encontrado = false;
-        libros += " <div class=\"row row-cols-1 row-cols-md-4 g-4\">";
 
         while (actual != null) {
             Libro libro = actual.getLibro();
@@ -386,8 +381,7 @@ public class Biblioteca implements Serializable {
     public String librosPrestados(int cedula) {
         Nodo actual = primero; // Comenzamos desde el primer nodo
 
-        String libros = "";
-        libros += " <div class=\"row row-cols-1 row-cols-md-4 g-4\">";
+        String libros = "<div class=\"row row-cols-1 row-cols-md-4 g-4\">";
         boolean encontrado = false;
 
         while (actual != null) {
@@ -396,18 +390,18 @@ public class Biblioteca implements Serializable {
 
             // Verifica si el libro está prestado y coincide con el número de cédula proporcionado
             if (libro.getPrestado() != null && info.getCedula() == cedula) {
-                libros += "<div class=\"col\">";
-                libros += "<div class=\"card-body\" style=\"min-height: 100%;\">";
-                libros += "<img src=\"imagenes/" + libro.getFotoPortada() + "\" class=\"card-img-top\" alt=\"" + libro.getFotoPortada() + "\" width=\"200px\" height=\"300px\">";
-                libros += "<center><h3 class=\"card-title\">" + libro.getTitulo() + "</h3></center>";
-                libros += "<p class=\"card-text\"> <b> Autor: </b>" + libro.getAutor() + "</p>";
-                libros += "<p class=\"card-text\"> <b>Año: </b>" + libro.getAnoPublicacion() + "</p>";
-                libros += "<p class=\"card-text\"> <b>Genero: </b>" + libro.getGenero() + "</p>";
-                libros += "<p class=\"card-text\"> Regresalo en: " + libro.getPrestado().getTiempo() + "</p>";
-                libros += "<a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"devolver\" data-bs-target=\"#devolverModal\" data-nombre=\"" + libro.getId() + "\" style=\"background-color: #5e3824;\">Devolver</a>";
-                libros += "</div>";
-                libros += "</div>";
-                libros += "</div>";
+                libros += "<div class=\"col\">"
+                + "<div class=\"card-body\" style=\"min-height: 100%;\">"
+                + "<img src=\"imagenes/" + libro.getFotoPortada() + "\" class=\"card-img-top\" alt=\"" + libro.getFotoPortada() + "\" width=\"200px\" height=\"300px\">"
+                + "<center><h3 class=\"card-title\">" + libro.getTitulo() + "</h3></center>"
+                + "<p class=\"card-text\"> <b> Autor: </b>" + libro.getAutor() + "</p>"
+                + "<p class=\"card-text\"> <b>Año: </b>" + libro.getAnoPublicacion() + "</p>"
+                + "<p class=\"card-text\"> <b>Genero: </b>" + libro.getGenero() + "</p>"
+                + "<p class=\"card-text\"> Regresalo en: " + libro.getPrestado().getTiempo() + "</p>"
+                + "<a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"devolver\" data-bs-target=\"#devolverModal\" data-nombre=\"" + libro.getId() + "\" style=\"background-color: #5e3824;\">Devolver</a>"
+                + "</div>"
+                + "</div>"
+                + "</div>";
                 encontrado = true;
             }
             actual = actual.getSiguiente();
@@ -435,8 +429,7 @@ public class Biblioteca implements Serializable {
     public String librosGenero(String genero) {
         Nodo actual = primero; // Comenzamos desde el primer nodo
 
-        String libros = "";
-        libros += " <div class=\"row row-cols-1 row-cols-md-4 g-4\">";
+        String libros = "<div class=\"row row-cols-1 row-cols-md-4 g-4\">"; // Inicia el contenedor de filas y columnas para las tarjetas
         boolean encontrado = false;
 
         while (actual != null) {
@@ -475,8 +468,7 @@ public class Biblioteca implements Serializable {
     public String librosGeneroBuscar(String genero, String termino) {
         Nodo actual = primero; // Comenzamos desde el primer nodo
 
-        String libros = "";
-        libros += " <div class=\"row row-cols-1 row-cols-md-4 g-4\">";
+       String libros = "<div class=\"row row-cols-1 row-cols-md-4 g-4\">"; // Inicia el contenedor de filas y columnas para las tarjetas
         boolean encontrado = false;
 
         while (actual != null) {
