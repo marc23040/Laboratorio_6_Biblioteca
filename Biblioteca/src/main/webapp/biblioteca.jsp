@@ -7,7 +7,14 @@
 
 <!-- Incluir los styles -->
 <header><%@include file= "styles/stylelogin.jsp" %></header>
-
+<style>
+    .card-img-top{
+        height: 400px;
+        
+    }.card-title{
+        margin-top: 10px;
+    }
+</style>
 <!-- Sección de scripts que controlan las notificaciones -->
 <%
     ServletContext context = getServletContext();

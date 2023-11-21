@@ -397,16 +397,13 @@ public class Biblioteca implements Serializable {
             // Verifica si el libro está prestado y coincide con el número de cédula proporcionado
             if (libro.getPrestado() != null && info.getCedula() == cedula) {
                 libros += "<div class=\"col\">";
-                libros += "<div class=\"card\">";
-
-                libros += "<div class=\"card-body\">";
+                libros += "<div class=\"card-body\" style=\"min-height: 100%;\">";
                 libros += "<img src=\"imagenes/" + libro.getFotoPortada() + "\" class=\"card-img-top\" alt=\"" + libro.getFotoPortada() + "\" width=\"200px\" height=\"300px\">";
-                libros += "<center><h2 class=\"card-title\">" + libro.getTitulo() + "</h2></center>";
+                libros += "<center><h3 class=\"card-title\">" + libro.getTitulo() + "</h3></center>";
                 libros += "<p class=\"card-text\"> <b> Autor: </b>" + libro.getAutor() + "</p>";
                 libros += "<p class=\"card-text\"> <b>Año: </b>" + libro.getAnoPublicacion() + "</p>";
                 libros += "<p class=\"card-text\"> <b>Genero: </b>" + libro.getGenero() + "</p>";
                 libros += "<p class=\"card-text\"> Regresalo en: " + libro.getPrestado().getTiempo() + "</p>";
-
                 libros += "<a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"devolver\" data-bs-target=\"#devolverModal\" data-nombre=\"" + libro.getId() + "\" style=\"background-color: #5e3824;\">Devolver</a>";
                 libros += "</div>";
                 libros += "</div>";
@@ -606,13 +603,13 @@ public class Biblioteca implements Serializable {
      */
     public String card(Libro libro) {
         // Inicio de la estructura HTML para la tarjeta del libro
-        String libros = "<div class=\"col\">"
-                + "<div class=\"card\">"
+        String libros = "<div class=\"col\" >"
+                + "<div class=\"card\" style=\"min-height: 100%;\">"
                 + "<div class=\"card-body\">"
                 // Agrega la imagen del libro con la ruta de la foto obtenida del objeto Libro
-                + "<img src=\"imagenes/" + libro.getFotoPortada() + "\" class=\"card-img-top\" alt=\"" + libro.getFotoPortada() + "\" width=\"200px\" height=\"300px\">"
+                + "<img src=\"imagenes/" + libro.getFotoPortada() + "\" class=\"card-img-top\" alt=\"" + libro.getFotoPortada() + "\" >"
                 // Agrega el título del libro centrado en la tarjeta
-                + "<center><h2 class=\"card-title\">" + libro.getTitulo() + "</h2></center>"
+                + "<center><h3 class=\"card-title\">" + libro.getTitulo() + "</h3></center>"
                 // Agrega el autor del libro como texto en la tarjeta
                 + "<p class=\"card-text\"> <b> Autor: </b>" + libro.getAutor() + "</p>"
                 // Agrega el año de publicación del libro como texto en la tarjeta
